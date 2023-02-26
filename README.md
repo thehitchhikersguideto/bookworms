@@ -119,7 +119,7 @@ xxx
 <!-- ROADMAP -->
 ## Roadmap
 
-See our project board for a list of proposed features (and known issues).
+> 
 
 
 
