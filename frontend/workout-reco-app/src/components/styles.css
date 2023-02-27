@@ -1,0 +1,36 @@
+@font-face {
+    font-family: 'MyFonts';
+    src:url('gym.woff');
+  }
+
+.container {
+    opacity: 1;
+    transform: translateY(20px);
+    transition: all 0.5s ease-in-out;
+}
+  
+.container.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+  
+  
+.title {
+    font-size: 100px;
+    text-align: center;
+    color: rgb(255, 255, 255);
+    font-family: 'MyFonts';
+    text-shadow: 3px 3px 4px rgba(0, 0, 0, 0.5);
+}
+
+.description {
+    font-size: 20px;
+    text-align: center;
+    color: rgb(255, 255, 255);
+    font-family: 'Times New Roman', Times, serif;
+    text-shadow: 3px 3px 4px rgba(0, 0, 0, 0.5);
+}
+
+.gitButton {
+    background-color: #a40f0f;
+}
