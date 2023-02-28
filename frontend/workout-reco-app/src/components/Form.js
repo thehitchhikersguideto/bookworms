@@ -14,9 +14,9 @@ function FormSection() {
   }
 
   return (
-    <section>
+    <section class = "FormS">
       <h2>Recommend Exercises</h2>
-      <form onSubmit={handleSubmit}>
+      <form class="req_btn" onSubmit={handleSubmit}>
         <label>
           Age:
           <input type="number" value={age} onChange={(event) => setAge(event.target.value)} />
@@ -35,14 +35,14 @@ function FormSection() {
         <label>
           Goal:
           <select value={goal} onChange={(event) => setGoal(event.target.value)}>
-            <option value="">--Select--</option>
+            <option value="">Select</option>
             <option value="lose">Lose Weight</option>
             <option value="gain">Gain Muscle</option>
             <option value="maintain">Maintain Weight</option>
           </select>
         </label>
         <br />
-        <button type="submit">Recommend Exercises</button>
+        <button class="request_ex" type="submit">Recommend Exercises</button>
       </form>
     </section>
   );

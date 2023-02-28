@@ -10,9 +10,10 @@ function AboutUsSection() {
     { name: 'Vera Prohaska', role: 'ML Engineer' },
     { name: 'Zane Reda', role: 'Product Owner' },
   ];
+  
 
   return (
-    <section>
+    <section class= "aboutus">
       <h2>About Us</h2>
       <ul>
         {members.map((member) => (
