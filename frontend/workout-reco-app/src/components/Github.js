@@ -4,7 +4,7 @@ import './styles.css';
 
 function GithubSection() {
   return (
-    <section>
+    <section class="git">
       <h2>Github</h2>
       <p>Check out our code on Github:</p>
       <a href="https://github.com/thehitchhikersguideto/gymworkouts" target="_blank" rel="noreferrer">
