@@ -1,0 +1,8 @@
+.venv*
+.ipynb_checkpoints
+*.egg-info
+*.csv
+/data
+tempCodeRunnerFile*
+# pychache
+__pycache__
