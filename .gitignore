@@ -1,0 +1,9 @@
+.venv
+*.log
+notes.txt
+megaGymDataset.csv
+archive.zip
+heart_data.csv
+Body_Measurements.csv
+Basic_Information.csv
+mergedDF.csv

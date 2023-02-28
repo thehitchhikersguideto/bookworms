@@ -1,0 +1,7 @@
+wheel 
+numpy 
+recommenders
+tensorflow
+pandas
+numpy
+papermill
