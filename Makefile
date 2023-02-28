@@ -12,3 +12,6 @@ run-fe:
 req: 
 	pip3 install -r requirements.txt
 	
+create-env-w: 
+	python -m venv .venvml
+	.\.venvml\Scripts\activate
