@@ -1,0 +1,162 @@
+@font-face {
+    font-family: 'MyFonts';
+    src:url('../fonts/gym.woff');
+  }
+
+@font-face {
+  font-family: 'text';
+  src:url('../fonts/Prototype.ttf');
+}
+
+.container {
+    opacity: 1;
+    transform: translateY(20px);
+    transition: all 0.5s ease-in-out;
+}
+  
+.container.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.title {
+    font-size: 120px;
+    text-align: center;
+    color: white /*( to bottom #4c0465, rgb(60, 25, 55))*/;
+    font-family: 'MyFonts';
+    text-shadow: 5px 5px 6px rgba(0, 0, 0, 0.5);
+    margin-top: 250px;
+    /*-webkit-text-stroke: 0.01vw #ffffff;*/
+    animation: 3s anim-lineUp ease-out;
+}
+
+.minititle {
+  font-size: 60px;
+  text-align: center;
+  color: white /*( to bottom #4c0465, rgb(60, 25, 55))*/;
+  font-family: 'MyFonts';
+  text-shadow: 5px 5px 6px rgba(0, 0, 0, 0.5);
+  margin-top: 250px;
+  /*-webkit-text-stroke: 0.01vw #ffffff;*/
+  animation: 3s anim-lineUp ease-out;
+}
+
+.popup{
+  font-size:40px;
+  text-align: center;
+  color: white;
+  font-family: 'MyFonts';
+  animation: 5s anim-lineUp ease-out;
+  margin-bottom:200px;
+  text-shadow: 5px 5px 6px rgba(0, 0, 0, 0.5);
+}
+
+@keyframes anim-lineUp {
+  0% {
+    opacity: 0;
+    transform: translateY(80%);
+  }
+  20% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+
+.box, .description, .FormS, .git, .aboutus {
+  margin: 120px;
+  border: 5px dashed rgb(167, 166, 166); 
+  box-sizing: border-box;
+}
+
+.description {
+    font-size: 35px;
+    text-align: center;
+    color: rgb(255, 255, 255);
+    font-family: 'text';
+    text-shadow: 3px 3px 4px rgba(0, 0, 0, 0.5);
+    padding: 15px;
+    min-width:100px; 
+    margin-top: 10px;
+    display: inline-block;
+}
+
+/* .description2 {
+  font-size: 20px;
+  text-align: center;
+  color: rgb(255, 255, 255);
+  font-family: 'text';
+  text-shadow: 3px 3px 4px rgba(0, 0, 0, 0.5);
+  margin-bottom:500px;
+} */
+
+.FormS{
+    color:rgb(255, 255, 255);
+    text-align: center;
+    margin-bottom: 300px;
+    font-family: 'text';
+    font-size: 25px;
+}
+
+.form_input {
+    font-size: 15px;
+    font-family: 'text';
+    text-align: left;
+    margin-bottom: 100px;
+}
+
+.input {
+  margin-left: 20px;
+  align-items: right;
+}
+
+.request_ex{
+    color:#4c0465;
+    font-family: 'text';
+    text-align: center;
+    border-radius: 5px;
+    margin: 25px;
+    font-size: 20px;
+}
+
+.req_btn{
+    color: #ffffff;
+    font-family: 'text';
+
+}
+
+.git{
+    color:rgb(255, 255, 255);
+    text-align: center;
+    margin-bottom:300px;
+    font-family: 'text';
+    font-size: 25px;
+}
+
+.gitButton {
+    background-color: #ffffff;
+    font-family: 'text';
+    margin-bottom: 20px;
+    font-size: 30px;
+    color: #4c0465;
+    border-radius: 10px;
+}
+
+.git-text {
+  margin-bottom: 30px;
+}
+
+.aboutus{
+    color:rgb(255, 255, 255);
+    text-align: center;
+    margin-bottom:500px;
+    margin-left:10px;
+    margin-right:10px;
+    font-family: 'text';
+}
