@@ -1,48 +1,40 @@
 import React from 'react';
-import { useEffect } from 'react';
-import TitleSection from './components/TitleSection';
-import DescriptionSection from './components/DescriptionSection';
-import FormSection from './components/FormSection';
-import GithubSection from './components/GithubSection';
-import AboutUsSection from './components/AboutUsSection';
+import TitleSection from './components/Title';
+import DescriptionSection from './components/Description';
+import FormSection from './components/Form';
+import GithubSection from './components/Github';
+import AboutUsSection from './components/About';
+import ScrollToButton from "./components/ScrollButton";
+import "./index.css"
 
-const [showSections, setShowSections] = useState(false);
+export default function App() {
 
-useEffect(() => {
-  const sections = document.querySelectorAll('.section');
+  const buttonConfigs = [
+    { label: 'Start', targetId: 'section1', offset: 400 },
+    { label: 'Description', targetId: 'section2', offset: 100 },
+    { label: 'Recommender', targetId: 'section3', offset: 225 },    
+    { label: 'GitHub', targetId: 'section4', offset: 275 },    
+    { label: 'Meet the Team', targetId: 'section5', offset: 100 },  
+  ];
 
-  function checkSection() {
-    sections.forEach(section => {
-      const sectionTop = section.getBoundingClientRect().top;
-      const windowHeight = window.innerHeight;
-      if (sectionTop < windowHeight - 100) {
-        section.classList.add('show');
-      } else {
-        section.classList.remove('show');
-      }
-    });
-  }
-
-  window.addEventListener('scroll', checkSection);
-
-  setShowSections(true);
-
-  return () => {
-    window.removeEventListener('scroll', checkSection);
-  }
-}, []);
-
-
-function App() {
   return (
     <div className="App">
-      <TitleSection />
-      <DescriptionSection />
-      <FormSection />
-      <GithubSection />
-      <AboutUsSection />
+      <ScrollToButton buttons={buttonConfigs} />
+      <div id="section1">
+        <TitleSection />
+      </div>
+      <div id="section2">
+        <DescriptionSection />
+      </div>
+      <div id="section3">
+        <FormSection />
+      </div>
+      <div id="section4">
+        <GithubSection />
+      </div>
+      <div id="section5">
+        <AboutUsSection />
+      </div>
     </div>
   );
 }
-
-export default App;

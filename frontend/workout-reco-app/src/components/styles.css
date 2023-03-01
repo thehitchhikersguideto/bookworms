@@ -1,11 +1,11 @@
 @font-face {
     font-family: 'MyFonts';
-    src:url('gym.woff');
+    src:url('../fonts/gym.woff');
   }
 
 @font-face {
   font-family: 'text';
-  src:url('Prototype.ttf');
+  src:url('../fonts/Prototype.ttf');
 }
 
 .container {
@@ -28,6 +28,17 @@
     margin-top: 250px;
     /*-webkit-text-stroke: 0.01vw #ffffff;*/
     animation: 3s anim-lineUp ease-out;
+}
+
+.minititle {
+  font-size: 60px;
+  text-align: center;
+  color: white /*( to bottom #4c0465, rgb(60, 25, 55))*/;
+  font-family: 'MyFonts';
+  text-shadow: 5px 5px 6px rgba(0, 0, 0, 0.5);
+  margin-top: 250px;
+  /*-webkit-text-stroke: 0.01vw #ffffff;*/
+  animation: 3s anim-lineUp ease-out;
 }
 
 .popup{
@@ -72,6 +83,7 @@
     text-shadow: 3px 3px 4px rgba(0, 0, 0, 0.5);
     padding: 15px;
     min-width:100px; 
+    margin-top: 10px;
     display: inline-block;
 }
 
@@ -134,6 +146,10 @@
     font-size: 30px;
     color: #4c0465;
     border-radius: 10px;
+}
+
+.git-text {
+  margin-bottom: 30px;
 }
 
 .aboutus{

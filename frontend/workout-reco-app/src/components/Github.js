@@ -2,16 +2,14 @@ import React from 'react';
 import './styles.css';
 
 
-function GithubSection() {
+export default function GithubSection() {
   return (
     <section class="git">
       <h2>Github</h2>
-      <p>Check out our code on Github:</p>
+      <p className='git-text'>Check out our code on Github:</p>
       <a href="https://github.com/thehitchhikersguideto/gymworkouts" target="_blank" rel="noreferrer">
         <button class="gitButton">Go to Github</button>
       </a>
     </section>
   );
 }
-
-export default GithubSection;
