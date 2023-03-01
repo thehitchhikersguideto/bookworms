@@ -7,10 +7,10 @@ import numpy as np
 
 faker = Faker()
 
-raw_data = pd.read_csv('/Users/vera/Courses/projectReco/data/megaGymDataset.csv')
+raw_data = pd.read_csv('./megaGymDataset.csv')
 
 # List of possible exercise names
-exercise_names = raw_data['Type'].unique()
+exercise_names = raw_data['Title'].unique()
 
 # List of user IDs
 user_ids = [faker.uuid4() for i in range(100)]

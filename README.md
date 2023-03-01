@@ -51,8 +51,10 @@
 <!-- ABOUT THE CLASS -->
 ## About The Class
 
-xxx
-
+1. Users rate 5-10 exercises on a scale of 1-5.
+2. Solving the cold start problem:  
+  - User Cluster 
+  - Simplified Workout Recommendation
 
 
 </div> 
