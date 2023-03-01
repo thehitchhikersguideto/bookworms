@@ -1,0 +1,66 @@
+
+ .columnT {
+    float: left;
+    margin: 20px;
+    margin-top: 50px;
+    margin-bottom: 125px;
+    padding: 0 8px;
+    font-family: 'text';
+    color: white;
+    max-width: 225px;
+    background-color: rgb(77, 20, 104);
+  }
+  
+  /* Display the columns below each other instead of side by side on small screens */
+  @media screen and (max-width: 650px) {
+    .columnT {
+      width: 100%;
+      display: block;
+    }
+  }
+  
+  /* Add some shadows to create a card effect */
+  .cardT {
+    box-shadow: 0 0px 6px 8px rgb(255, 255, 255);
+  }
+  
+  /* Some left and right padding inside the container */
+  .containerT {
+    padding: 0 16px;
+  }
+  
+  /* Clear floats */
+  .containerT::after, .rowT::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+  
+  .titleT {
+    color: rgb(255, 255, 255);
+    font-family: 'text';
+  }
+  
+  .buttonT {
+    border: none;
+    outline: 0;
+    display: inline-block;
+    padding: 8px;
+    color: white;
+    background-color: #ffffff;
+    font-family: 'text';
+    text-align: center;
+    color: purple;
+    font-size: 20px;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom: 15px;
+  }
+  
+  .buttonT:hover {
+    background-color: #cbc5c59f;
+  } 
+
+  .image {
+    margin: 12px;
+  }

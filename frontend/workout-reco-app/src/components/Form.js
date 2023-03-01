@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import './styles.css';
 
-
-function FormSection() {
+export default function FormSection() {
   const [age, setAge] = useState('');
   const [weight, setWeight] = useState('');
   const [height, setHeight] = useState('');
@@ -17,24 +16,24 @@ function FormSection() {
     <section class = "FormS">
       <h2>Recommend Exercises</h2>
       <form class="req_btn" onSubmit={handleSubmit}>
-        <label>
+        <label className='form_input' >
           Age:
-          <input type="number" value={age} onChange={(event) => setAge(event.target.value)} />
+          <input className="input" type="number" value={age} onChange={(event) => setAge(event.target.value)} />
         </label>
         <br />
-        <label>
+        <label className='form_input' >
           Weight (in kg):
-          <input type="number" value={weight} onChange={(event) => setWeight(event.target.value)} />
+          <input className="input" type="number" value={weight} onChange={(event) => setWeight(event.target.value)} />
         </label>
         <br />
-        <label>
+        <label className='form_input' >
           Height (in cm):
-          <input type="number" value={height} onChange={(event) => setHeight(event.target.value)} />
+          <input className="input" type="number" value={height} onChange={(event) => setHeight(event.target.value)} />
         </label>
         <br />
-        <label>
+        <label className='form_input' >
           Goal:
-          <select value={goal} onChange={(event) => setGoal(event.target.value)}>
+          <select className="input" value={goal} onChange={(event) => setGoal(event.target.value)}>
             <option value="">Select</option>
             <option value="lose">Lose Weight</option>
             <option value="gain">Gain Muscle</option>
@@ -47,5 +46,3 @@ function FormSection() {
     </section>
   );
 }
-
-export default FormSection;
