@@ -2,7 +2,7 @@
  .columnT {
     float: left;
     margin: 20px;
-    margin-top: 50px;
+    margin-top: 30px;
     margin-bottom: 125px;
     padding: 0 8px;
     font-family: 'text';
@@ -11,7 +11,6 @@
     background-color: rgb(77, 20, 104);
   }
   
-  /* Display the columns below each other instead of side by side on small screens */
   @media screen and (max-width: 650px) {
     .columnT {
       width: 100%;
@@ -19,17 +18,14 @@
     }
   }
   
-  /* Add some shadows to create a card effect */
   .cardT {
-    box-shadow: 0 0px 6px 8px rgb(255, 255, 255);
+    box-shadow: 0 0px 6px 8px rgb(31, 0, 188);
   }
   
-  /* Some left and right padding inside the container */
   .containerT {
     padding: 0 16px;
   }
   
-  /* Clear floats */
   .containerT::after, .rowT::after {
     content: "";
     clear: both;

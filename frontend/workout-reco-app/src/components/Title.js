@@ -1,8 +1,7 @@
 import React from 'react';
 import './styles.css';
 
-
-function TitleSection() {
+export default function TitleSection() {
   return (
     <section>
       <h1 class="title">WORKOUT RECOMMENDER</h1>
@@ -10,5 +9,3 @@ function TitleSection() {
     </section>
   );
 }
-
-export default TitleSection;

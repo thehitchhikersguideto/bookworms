@@ -1,0 +1,31 @@
+.scroll-to-buttons {
+  background-color: #330c41;
+  padding: 10px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  z-index: 1000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  box-shadow: 0 0px 6px 4px rgb(33, 1, 192);
+}
+
+.scroll-to-buttons button {
+  display: inline-block;
+  background-color: #441276;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: "text";
+  margin: 0 10px;
+}
+
+.scroll-to-buttons button:hover {
+  background-color: #2b1545;
+}
