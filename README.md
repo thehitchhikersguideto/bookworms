@@ -95,10 +95,8 @@ xxx
 3. Make sure you select you select the virtual environment you created as the interpreter in 
   VS CODE
   ```sh
-  -> CRTL + SHIFT + P 
-  -> >Python: Select Interpreter
-  -> Add New Interpreter
-  -> Paste this link: .venv/bin/Python3.10
+  make create-env
+  make create-env-w
   ```
 4. See any notebooks which peak your interest
 
