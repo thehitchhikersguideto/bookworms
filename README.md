@@ -149,9 +149,9 @@ If you have a suggestion that would make this better, please fork the repo and c
 Don't forget to give the project a star! Thanks again!
 
 1. Clone the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
+2. Create your Feature Branch (`git checkout -b feature/<issuenumber>-<your-name>-name-of-feature`)
+3. Commit your Changes (`git commit -m 'description of your changes'`)
+4. Push to the Branch (`git push origini feature/<issuenumber>-<your-name>-name-of-feature  `)
 5. Open a Pull Request
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
