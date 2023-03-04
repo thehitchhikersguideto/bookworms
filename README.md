@@ -18,11 +18,11 @@
     <img src="https://img.freepik.com/free-vector/fitness-gym-interior-background-room-with-sport-equipment-workouts-treadmill-bike-dumbbells-barbell-water-cooler-mat-floor_575670-1344.jpg?w=1800&t=st=1676630912~exp=1676631512~hmac=0e1f6e47d318b8bf6637d54b783c258b848d42c941546610bea1e40cbae34949" style="border-radius: 30px" >
   </a>
 
-<h3 align="center">Recommendation System for Gym Workouts</h3>
+<h3 align="center">Recommendation System for Reading Enthusiasts</h3>
 
 
   <p align="center">
-    Are you ready to gym? 
+    Are you ready to literature? 
 </div>
 
 
@@ -49,9 +49,25 @@
 
 
 <!-- ABOUT THE CLASS -->
-## About The Class
+## Project Scope 
+### The What
 
-xxx
+<Description of the project and its purpose>
+
+### The Why
+
+
+| Pain Point | Description | Solution |
+| --- | --- | --- |
+| Desire | I want to read a book, but I don't know what to read. | A recommendation system that recommends books based on your preferences. |
+| Knowledge | I want to read a book, but I don't know what to read. | A recommendation system that recommends books based on your preferences. |
+| Diversity | I want to read a book, but I don't know what to read. | A recommendation system that recommends books based on your preferences. |
+| Time | I want to read a book, but I don't know what to read. | A recommendation system that recommends books based on your preferences. |
+
+
+### The How
+
+
 
 
 
@@ -85,20 +101,16 @@ xxx
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/thehitchhikersguideto/gymworkouts.git
+   git clone https://github.com/thehitchhikersguideto/bookworms.git
    ```
 2. Create a virtual environment and install the requirements
-    ```python
-    python -m venv .venv 
-    pip install -r requirements.txt
     ```
-3. Make sure you select you select the virtual environment you created as the interpreter in 
-  VS CODE
-  ```sh
-  make create-env
-  make create-env-w
-  ```
-4. See any notebooks which peak your interest
+    make env // or make env-win if you are on windows
+
+    ```
+3. See any notebooks which peak your interest
+
+
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -136,7 +148,7 @@ If you have a suggestion that would make this better, please fork the repo and c
 
 Don't forget to give the project a star! Thanks again!
 
-1. Fork the Project
+1. Clone the Project
 2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
 3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
@@ -149,7 +161,7 @@ Don't forget to give the project a star! Thanks again!
 <!-- MARKDOWN LINKS & IMAGES [![Name][Shield]][url] -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [contributors-shield]: https://img.shields.io/github/contributors/vtwoptwo/CPPBasics.svg?style=for-the-badge
-[contributors-url]: https://github.com/thehitchhikersguideto/gymworkouts/graphs/contributors
+[contributors-url]: https://github.com/thehitchhikersguideto/bookworms/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/vtwoptwo/CPPBasics.svg?style=for-the-badge
 [forks-url]: https://github.com/thehitchhikersguideto/gymworkouts/network/members
 [stars-shield]: https://img.shields.io/github/stars/vtwoptwo/CPPBasics.svg?style=for-the-badge
