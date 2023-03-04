@@ -51,28 +51,5 @@ jobs:
     - name: Run ML tests
       if: contains(github.event.pull_request.changed_files, '.py')
       run: ML-test.yml
-
-    - name: Request review
-      uses: reviewdog/action-github-pr-review@v1
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        reporter: github-pr-review
-        tool_name: pylint
-        filter_mode: file
-        level: warning
-        reviewdog_flags: -diff="git diff HEAD^ HEAD --name-only" -reporter=github-pr-review -level=warning -fail-on-error
-
-  merge:
-    runs-on: ubuntu-latest
-    needs: [build]
-    if: ${{ always() }}
-    steps:
-    - name: Merge pull request
-      uses: peter-evans/create-pull-request@v3.10.1
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
-        commit-message: Automated merge
-        title: Automated merge
-        branch: main
-        body: Automated merge 
-        delete-branch: true 
+    
+    
