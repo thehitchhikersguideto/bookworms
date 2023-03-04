@@ -1,0 +1,29 @@
+name: Python Tests
+
+on: 
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Log level'     
+        required: true
+        default: 'warning'
+      tags:
+        description: 'Python test'  
+
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.8'
+      - name: Install dependencies
+        run: 
+          pip install -r requirements.txt
+          pip install pytest coverage 
+        
+      - name: Run tests
+        run: pytest tests/
