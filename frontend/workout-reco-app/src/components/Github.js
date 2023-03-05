@@ -7,7 +7,7 @@ export default function GithubSection() {
     <section class="git">
       <h2>Github</h2>
       <p className='git-text'>Check out our code on Github:</p>
-      <a href="https://github.com/thehitchhikersguideto/gymworkouts" target="_blank" rel="noreferrer">
+      <a href="https://github.com/thehitchhikersguideto/bookworms/" target="_blank" rel="noreferrer">
         <button class="gitButton">Go to Github</button>
       </a>
     </section>
