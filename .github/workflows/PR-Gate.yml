@@ -8,9 +8,6 @@ jobs:
   python-tests:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-        
       - name: Call ML test
         if: ${{ endsWith(github.event.pull_request.head.ref, '.py') }}
         uses: ./ML-test.yml
@@ -18,14 +15,6 @@ jobs:
   node-tests:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-      - name: Install dependencies
-        if: ${{ endsWith(github.event.pull_request.head.ref, '.js') }}
-        run: npm install
-      - name: Run tests
-        if: ${{ endsWith(github.event.pull_request.head.ref, '.js') }}
-        run: npm test
       - name: Call FE test
         if: ${{ endsWith(github.event.pull_request.head.ref, '.js') }}
         uses: ./FE-test.yml
