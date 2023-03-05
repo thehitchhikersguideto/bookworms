@@ -1,25 +1,16 @@
-name: Auto Merge PR on Review
+name: Pull Request Workflow
 
 on:
   pull_request_review:
     types: [submitted]
-  
+
 jobs:
-  auto_merge:
+  approved:
+    name: Approval Check of PR
+    if: github.event.review.state == 'approved'
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-        with:
-          ref: ${{ github.head_ref }}
-      - name: Auto merge PR
-        if: github.event.review.state == 'approved' && github.event.pull_request.head.repo.full_name == 'your-repository-name/your-branch-name'
-        uses: peter-evans/auto-merge@v2.5.1
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          merge_method: merge
-          commit_message: 'Automatically merged by GitHub Actions'
-          delete_branch: true
+      - run: echo "This PR was approved"
 
 
 
