@@ -1,55 +1,31 @@
-name: Conditional Pull Request Checks
+name: PR Gate
 
 on:
   pull_request:
-    branches:
-      - main
-
+    branches: [ main ]
+  
 jobs:
-  build:
+  python-tests:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-      with:
-        ref: ${{ github.event.pull_request.head.ref }}
-        fetch-depth: 0
+      - name: Checkout code
+        uses: actions/checkout@v2
         
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: 3.8
+      - name: Call ML test
+        if: ${{ endsWith(github.event.pull_request.head.ref, '.py') }}
+        uses: ./ML-test.yml
 
-    - name: Install Python dependencies
-      run: |
-        python -m pip install --upgrade pip 
-        pip install -r requirements.txt
-
-
-    - name: Run Python tests
-      if: contains(github.event.pull_request.changed_files, '.py')
-      run: FE-test.yml
-
-
-    - name: Lint Python code
-      if: contains(github.event.pull_request.changed_files, '.py')
-      run: pylint src/
-
-      
-    - name: Install Node.js
-      if: contains(github.event.pull_request.changed_files, '.js')
-      uses: actions/setup-node@v2-beta
-      with:
-        node-version: '16.x'
-
-    - name: Install Node.js dependencies
-      if: contains(github.event.pull_request.changed_files, '.js')
-      run: npm install
-    - name: Run React tests
-      if: contains(github.event.pull_request.changed_files, '.js')
-      run: FE-test.yml
-    - name: Run ML tests
-      if: contains(github.event.pull_request.changed_files, '.py')
-      run: ML-test.yml
-    
-    
+  node-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Install dependencies
+        if: ${{ endsWith(github.event.pull_request.head.ref, '.js') }}
+        run: npm install
+      - name: Run tests
+        if: ${{ endsWith(github.event.pull_request.head.ref, '.js') }}
+        run: npm test
+      - name: Call FE test
+        if: ${{ endsWith(github.event.pull_request.head.ref, '.js') }}
+        uses: ./FE-test.yml
