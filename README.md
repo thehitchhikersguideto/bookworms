@@ -51,25 +51,39 @@
 <!-- ABOUT THE CLASS -->
 ## Project Scope 
 ### The What
+Our team developed a Book Recommender System that provides personalized book recommendations based on the user's reading history and preferences. The system will use a dataset of books and their corresponding reviews from Good Books to generate recommendations for users. 
 
-<Description of the project and its purpose>
+Focus will be made in creating a separate dashboard for the range of stakeholders involved in the book industry:
+
+- Readers
+- Authors
+- Publishers
 
 ### The Why
+The Book Recommender System is being developed to provide a better user experience for book lovers. The system will help users discover new books that align with their interests, leading to increased engagement and satisfaction. Additionally, the system will help bookstores and publishers increase sales by targeting book recommendations to specific audiences.
+
 
 
 | Pain Point | Description | Solution |
 | --- | --- | --- |
-| Desire | I want to read a book, but I don't know what to read. | A recommendation system that recommends books based on your preferences. |
-| Knowledge | I want to read a book, but I don't know what to read. | A recommendation system that recommends books based on your preferences. |
-| Diversity | I want to read a book, but I don't know what to read. | A recommendation system that recommends books based on your preferences. |
-| Time | I want to read a book, but I don't know what to read. | A recommendation system that recommends books based on your preferences. |
+| Desire | I want to read a new book, but I don't know what to read. | A recommendation system that recommends books based on your preferences. |
+| Knowledge | I know what I like, but I don't know how to translate it into a book selection to choose from. | A recommendation system that recommends books based on your past review behaviour. |
+| Diversity | I want to read a book about a specific topic, but I don't know what to read. | A recommendation system that recommends books based on natural language inputs from the user. |
+| Time | I want to read as much books as possible, but there is just enough time in a day to read. | A recommendation system that recommends a narrow selection of books to ease selection. |
 
 
 ### The How
+The Book Recommender System will be developed using machine learning algorithms and natural language processing techniques. The system will first analyze the user's reading history and preferences to create a profile of their interests. This profile will be used to generate book recommendations that match the user's tastes. The system will also use collaborative filtering to recommend books that are popular among users with similar interests. We will use the Good Books dataset to train and test our machine learning models. Finally, the system will be deployed using a web application that provides an intuitive interface for users to receive and provide feedback on book recommendations.
 
 
+### Stakeholders
+Here's an explanation of the underlying business problems for all stakeholders in the book industry and how the Book Recommender System will help overcome them:
 
+Readers: One of the main problems for readers is finding new books to read that match their interests. With so many books available, it can be overwhelming to decide what to read next. The Book Recommender System will help readers overcome this problem by providing personalized book recommendations based on their reading history and preferences.
 
+Bookstores: Bookstores face the challenge of recommending books that appeal to their customers in order to increase sales. With the Book Recommender System, bookstores will be able to target book recommendations to specific audiences based on their preferences, increasing the chances of customers making purchases.
+
+Publishers: Publishers need to ensure that their books reach their target audience to maximize sales. The Book Recommender System will help publishers by providing data on readers' interests and preferences, allowing publishers to better understand their target audience and market their books more effectively.
 
 </div> 
 
