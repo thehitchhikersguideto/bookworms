@@ -5,12 +5,7 @@ from data import get_mongo_config
 
 # tests
 def test_config():
-    env = {
-        'MONGO_URI': 'mongodb://localhost:27017',
-        'MONGO_DB': 'test',
-        'MONGO_COL': 'test',
-        'MONGO_DEST': 'test'
-    }
+
     false_env = {
         'MONGO_URI': '',
         'MONGO_DB': '',
@@ -18,7 +13,13 @@ def test_config():
         'MONGO_DEST': ''
     }
 
-
+    env = {
+        'MONGO_URI': 'mongodb://localhost:27017',
+        'MONGO_DB': 'test',
+        'MONGO_COL': 'test',
+        'MONGO_DEST': 'test'
+    }
+    
     assert get_mongo_config(env) == {
         'uri': 'mongodb://localhost:27017',
         'db': 'test',

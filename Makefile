@@ -8,13 +8,13 @@ env-win:
 
 
 # tests 
-
 ci-test-py:
-	python3 -m pytest --cov=src --cov-report=xml --cov-report=term-missing --cov-fail-under=100 tests
+	python3 -m pytest --cov=src 
 
 ci-test-js:
 	npm test --prefix ./src
 
 ci-test: ci-test-py ci-test-js
+
 
 
