@@ -15,7 +15,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/thehitchhikersguideto/gymworkouts">
-    <img src="https://img.freepik.com/free-vector/fitness-gym-interior-background-room-with-sport-equipment-workouts-treadmill-bike-dumbbells-barbell-water-cooler-mat-floor_575670-1344.jpg?w=1800&t=st=1676630912~exp=1676631512~hmac=0e1f6e47d318b8bf6637d54b783c258b848d42c941546610bea1e40cbae34949" style="border-radius: 30px" >
+    <img src="https://img.freepik.com/free-vector/hand-drawn-flat-design-stack-books_23-2149331952.jpg?w=826&t=st=1678020261~exp=1678020861~hmac=7539b0a117cd1610f052ab1b11fddc03c8552a9f1894d273446a3b23d546eb5f" style="border-radius: 30px" >
   </a>
 
 <h3 align="center">Recommendation System for Reading Enthusiasts</h3>
