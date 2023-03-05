@@ -1,29 +1,24 @@
-name: Python Tests
+name: PR Gate
 
-on: 
-  workflow_dispatch:
-    inputs:
-      logLevel:
-        description: 'Log level'     
-        required: true
-        default: 'warning'
-      tags:
-        description: 'Python test'  
-
-
+on:
+  pull_request:
+    branches: [ main ]
+  
 jobs:
-  test:
+  python-tests:
     runs-on: ubuntu-latest
+    if: ${{ endsWith(github.event.pull_request.head.ref, '.py') }}
     steps:
-      - uses: actions/checkout@v2
-      - name: Set up Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: '3.8'
-      - name: Install dependencies
-        run: 
-          pip install -r requirements.txt
-          pip install pytest coverage flake8 
-        
-      - name: Run tests
-        run: pytest tests/
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Call ML test
+        uses: ./ML-test.yml
+
+  node-tests:
+    runs-on: ubuntu-latest
+    if: ${{ endsWith(github.event.pull_request.head.ref, '.js') }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Call FE test
+        uses: ./FE-test.yml
