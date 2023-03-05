@@ -129,6 +129,13 @@
 <!-- ROADMAP -->
 ## Roadmap
 
+
+### MongoDB and Configurations
+The project is currently in the process of being configured to use MongoDB. The goal is to have a database that can be accessed by the web application and the recommendation system. 
+
+What is the best way to construct an ML
+
+
 See our project board for a list of proposed features (and known issues).
 
 
