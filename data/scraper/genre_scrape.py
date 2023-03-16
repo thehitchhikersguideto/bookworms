@@ -3,7 +3,7 @@ import bs4
 import logging
 
 logging.basicConfig(
-        filemode="w"
+        filemode="w",filename='genre_scrape.log', level=logging.DEBUG
     )
 
 
@@ -21,7 +21,6 @@ def grab_genres(page = 1):
     else:
         source = urlopen('https://www.goodreads.com/genres/list?page=' + str(page))
     soup = bs4.BeautifulSoup(source, 'lxml')
-    logging.basicConfig(filename='goodReadsRandScrape.log', level=logging.DEBUG)
     genres = [node['href'] for node in soup.find_all('a', {'class': 'mediumText actionLinkLite'})]
     # Remove the /genres/ from the href
     genres = [genre.split('/')[-1] for genre in genres]
@@ -60,23 +59,42 @@ def grab_books(listTag):
 
 
 # Got to the genre page
-def fetchBooks():
+def fetchBooks(startPage = 1, endPage = 15, startGenre = 0):
     # For loop representing the pages of genres, 1-14
-    for i in range(1, 15):
-        genres = grab_genres()
-        for genre in genres:
-            lists = grab_lists(genre)
-            logging.info("List count: " + str(len(lists)))
-            count = 0
-            for list in lists:
-                books = grab_books(list)
-                logging.info("Book count: " + str(len(books)))
-                # Write to href of each book to a file
-                with open('books.txt', 'a') as f:
-                    for book in books:
-                        if count == 500:
-                            break
-                        # Remove the /book/show/ from the href
-                        book = book.split('/')[-1]
-                        # Add a new line inbetween each book
-                        f.write(book + '\n')
+    try:
+        for i in range(startPage, endPage):
+            genres = grab_genres(i)
+            print("Genre count: " + str(len(genres)))
+            print(i)
+            for genre in genres[startGenre:]:
+                print(genre)
+                lists = grab_lists(genre)
+                logging.info("List count: " + str(len(lists)))
+                print("List count: " + str(len(lists)))
+                count = 0
+                for list in lists:
+                    books = grab_books(list)
+                    logging.info("Book count: " + str(len(books)))
+                    # Write to href of each book to a file
+                    with open('books.txt', 'a') as f:
+                        for book in books:
+                            if count == 300:
+                                break
+                            # Remove the /book/show/ from the href
+                            book = book.split('/')[-1]
+                            # Add a new line inbetween each book
+                            f.write(book + '\n')
+                            count+=1
+    except Exception as e:
+        logging.error(e)
+        logging.info("Error occured on page " + str(i) + " and genre " + genre)
+        print(e)
+        fetchBooks(startPage=i, startGenre=genres.index(genre))
+
+if __name__ == '__main__':
+    # READ ME
+    # This script will take a while to run, it will take a while to fetch all the books
+    # There are around 1400 genres, each genre has around 20 lists, each list has 50-200 books
+    # Set your start params in fetchBooks() to start from where you left off
+    # If an error occurs, the script will log the error and the page and genre it was on and automatically start from there
+    fetchBooks(10,11)

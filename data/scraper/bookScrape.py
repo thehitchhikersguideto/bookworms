@@ -1,21 +1,11 @@
-import argparse
-from datetime import datetime
-import json
+
+
 import os
-import re
-import time
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.common.action_chains import ActionChains as AC
 import pymongo
-from bson import BSON
 from dotenv import load_dotenv
-
-from urllib.request import urlopen
-from urllib.error import HTTPError
 import bs4
 import os
 
