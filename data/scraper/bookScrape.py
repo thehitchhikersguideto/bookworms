@@ -1,5 +1,3 @@
-
-
 import os
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -8,6 +6,8 @@ import pymongo
 from dotenv import load_dotenv
 import bs4
 import os
+from mongo_handler import MongoReco
+import logging
 
 
 def initSoup(html):
@@ -513,6 +513,32 @@ def MasterHandling():
                     insertIntoMongo(collection, result)
                     result = []
             driver.quit()
+
+def book_info_provisioner():
+    try: 
+        books = MongoReco.retrieve_books_from_book_lists(10)
+        driver = initDriver(books[0])
+        result = []
+        for book in books:
+            print(book)
+            feed(driver, book)
+            checkForOverlay(driver)
+            expandEverything(driver)
+            loadLists(driver)
+            html = driver.page_source
+            result.append(soupProvisioner(html))
+        success = MongoReco.insert_into_books(result, many=True)
+        if success:
+            logging.info("Successfully inserted books into books collection")
+            MongoReco.update_book_list(books)
+            book_info_provisioner()
+
+        driver.quit()
+
+    except Exception as e:
+        print(e)
+        driver.quit()
+        return False
 
 def writeHtmltoFile(html):
     # create new file

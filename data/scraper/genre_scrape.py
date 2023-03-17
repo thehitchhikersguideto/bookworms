@@ -1,9 +1,10 @@
 from urllib.request import urlopen
 import bs4
 import logging
+from mongo_handler import MongoReco
 
 logging.basicConfig(
-        filemode="w",filename='genre_scrape.log', level=logging.DEBUG
+        filemode="w",filename=' genre_scrape.log', level=logging.DEBUG
     )
 
 
@@ -61,6 +62,7 @@ def grab_books(listTag):
 # Got to the genre page
 def fetchBooks(startPage = 1, endPage = 15, startGenre = 0):
     # For loop representing the pages of genres, 1-14
+
     try:
         for i in range(startPage, endPage):
             genres = grab_genres(i)
@@ -71,12 +73,13 @@ def fetchBooks(startPage = 1, endPage = 15, startGenre = 0):
                 lists = grab_lists(genre)
                 logging.info("List count: " + str(len(lists)))
                 print("List count: " + str(len(lists)))
-                count = 0
+                # count = 0
                 for list in lists:
                     books = grab_books(list)
                     logging.info("Book count: " + str(len(books)))
                     # Write to href of each book to a file
-                    with open('books.txt', 'a') as f:
+                    MongoReco.insert_href_into_book_list(books, many=True)
+                    """ with open('books.txt', 'a') as f:
                         for book in books:
                             if count == 300:
                                 break
@@ -84,7 +87,7 @@ def fetchBooks(startPage = 1, endPage = 15, startGenre = 0):
                             book = book.split('/')[-1]
                             # Add a new line inbetween each book
                             f.write(book + '\n')
-                            count+=1
+                            count+=1 """
     except Exception as e:
         logging.error(e)
         logging.info("Error occured on page " + str(i) + " and genre " + genre)
