@@ -12,7 +12,6 @@ logging.basicConfig(filename='mongoDBHandler.log', filemode='w', level=logging.D
 class MongoReco:
 
     __instance = None
-    
 
     def __new__(cls):
         if cls.__instance is None:
