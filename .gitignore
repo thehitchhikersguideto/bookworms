@@ -3,5 +3,5 @@ tempCodeRunnerFile*
 recommenders
 .venv*
 *.env
-
+*.log
 
