@@ -25,7 +25,7 @@ def get_series_name(soup):
                 return soup
 
     except Exception as e:
-        print(e)
+        logging.info(e)
         return None
     
 def get_isbn(soup):
@@ -40,7 +40,7 @@ def get_isbn(soup):
                 return soup
 
     except Exception as e:
-        print(e)
+        logging.info(e)
         return None
 
 def get_language(soup):
@@ -53,7 +53,7 @@ def get_language(soup):
                 return soup
 
     except Exception as e:
-        print(e)
+        logging.info(e)
         return None
 
 def get_pages(soup):
@@ -68,7 +68,7 @@ def get_pages(soup):
                 return soup
 
     except Exception as e:
-        print(e)
+        logging.info(e)
         return None
 
 def get_publish_date(soup):
@@ -85,7 +85,7 @@ def get_publish_date(soup):
             
 
     except Exception as e:
-        print(e)
+        logging.info(e)
         return None, None
 
 def get_publisher_year_published(soup):
@@ -110,7 +110,7 @@ def get_publisher_year_published(soup):
         
 
     except Exception as e:
-        print(e)
+        logging.info(e)
         return None, None
     
 def get_primary_lists(soup):
@@ -127,7 +127,7 @@ def get_primary_lists(soup):
         return lists
 
     except Exception as e:
-        print(e)
+        logging.info(e)
         return None
     
 def get_all_lists_link(soup):
@@ -136,7 +136,7 @@ def get_all_lists_link(soup):
         return soup
 
     except Exception as e:
-        print(e)
+        logging.info(e)
         return None
     
 def get_rating(soup):
@@ -145,7 +145,7 @@ def get_rating(soup):
         return soup
 
     except Exception as e:
-        print(e)
+        logging.info(e)
         return None
 
 def get_num_reviews(soup):
@@ -156,7 +156,7 @@ def get_num_reviews(soup):
         return soup
 
     except Exception as e:
-        print(e)
+        logging.info(e)
         return None
 
 def get_num_ratings(soup):
@@ -167,7 +167,7 @@ def get_num_ratings(soup):
         return soup
 
     except Exception as e:
-        print(e)
+        logging.info(e)
         return None
 
 def get_awards(soup):
@@ -191,7 +191,7 @@ def get_awards(soup):
         return awards
 
     except Exception as e:
-        print(e)
+        logging.info(e)
         return None
 
 def get_author(soup):
@@ -200,7 +200,7 @@ def get_author(soup):
         return soup
 
     except Exception as e:
-        print(e)
+        logging.info(e)
         return None
 
 def get_price(soup):
@@ -213,7 +213,7 @@ def get_price(soup):
         return soup
 
     except Exception as e:
-        print(e)
+        logging.info(e)
         return None
 
 def get_genres(soup):
@@ -235,7 +235,7 @@ def get_genres(soup):
         return genres
 
     except Exception as e:
-        print(e)
+        logging.info(e)
         return None
     
 def get_description(soup):
@@ -244,7 +244,7 @@ def get_description(soup):
         return soup
 
     except Exception as e:
-        print(e)
+        logging.info(e)
         return None
 
 def get_title(soup):
@@ -253,7 +253,7 @@ def get_title(soup):
         return soup
 
     except Exception as e:
-        print(e)
+        logging.info(e)
         return None
 
 def get_current_readers(soup):
@@ -264,7 +264,7 @@ def get_current_readers(soup):
         return soup
 
     except Exception as e:
-        print(e)
+        logging.info(e)
         return None
     
 def get_date_time_of_scrape():
@@ -278,11 +278,10 @@ def get_wanted_to_read(soup):
         return soup
 
     except Exception as e:
-        print(e)
+        logging.info(e)
         return None
 
 def soupProvisioner(html, href):
-    href = href
     soup = initSoup(html)
     title = get_title(soup)
     series = get_series_name(soup)
@@ -385,15 +384,17 @@ def checkForOverlay(driver):
             element = driver.find_element(By.CSS_SELECTOR, 'body > div.Overlay.Overlay--floating > div > div.Overlay__header > div')
             if element.is_displayed() and element.is_enabled():
                 print("Overlay handled")
+                logging.info("Overlay handled")
                 element.click()
                 return False
                 
         except Exception as e:
             print("Overlay Error")
-            print(e)
+            logging.info("Overlay Error")
             return True
     except:
         print("No Overlay")
+        logging.info("No Overlay")
         return False
         
  
@@ -405,7 +406,7 @@ def loadLists(driver):
         return True
     except Exception as e:
         print("Lists not yet loaded, continuing scroll")
-        
+        logging.info("Lists not yet loaded, continuing scroll")
         loadLists(driver)
 
 
@@ -440,7 +441,7 @@ def expandEverything(driver):
                 logging.info(e)
                 # logging.info(driver.page_source)
                 return False
-            print(e)
+            logging.info(e)
             return False
 
 def html_expansion_wrapper(driver):
@@ -460,7 +461,7 @@ def book_info_provisioner(count = 0, max_count = 100):
                 feed(driver, book)
                 if html_expansion_wrapper(driver):
                     html = driver.page_source
-                    result.append([soupProvisioner(html), book])
+                    result.append([soupProvisioner(html, book), book])
                 else:
                     logging.info("Error in expansion, skipping " + book)
                     continue
@@ -478,7 +479,7 @@ def book_info_provisioner(count = 0, max_count = 100):
             driver.quit()
 
         except Exception as e:
-            print(e)
+            logging.info(e)
             driver.quit()
             return False
     else:
