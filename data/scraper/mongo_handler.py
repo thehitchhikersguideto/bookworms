@@ -112,7 +112,7 @@ class MongoReco:
                     return True
         except Exception as e:
                 logging.error("Failed to insert " + href + " into " + str(cls.__collection_book_list))
-                logging.error(e)
+                # logging.info(e)
                 return False
         
     @classmethod
@@ -130,7 +130,7 @@ class MongoReco:
         except Exception as e:
             for i in range(len(dict_result)):
                 logging.error("Failed to insert " + dict_result[i]['Title'] + " into " + str(cls.__collection_books))
-            logging.error(e)
+            # logging.info(e)
             return False
     
     # Reviews are inserted into the BookReviews collection
@@ -148,7 +148,7 @@ class MongoReco:
                 return True
         except Exception as e:
             logging.error("Failed to insert " + dict_result[i]['Title'] + " into " + str(cls.__collection_book_reviews))
-            logging.error(e)
+            # logging.info(e)
             return False
         
     @classmethod
@@ -162,7 +162,7 @@ class MongoReco:
             return hrefs
         except Exception as e:
             logging.error("Failed to retrieve books from " + str(cls.__collection_book_list))
-            logging.error(e)
+            # logging.info(e)
             return False
     
 
@@ -177,21 +177,21 @@ class MongoReco:
             return True
         except Exception as e:
             logging.error("Failed to update " + str(len(hrefs)) + " hrefs in " + str(cls.__collection_book_list))
-            logging.error(e)
+            # # logging.info(e)
             return False
     
     # Do the same but for the scraped reviews
     @classmethod
-    def update_book_list_review_scraped(cls,hrefs):
+    def update_book_list_review_scraped(cls,book_ids):
         try:
-            for href in hrefs:
-                logging.info("Updating " + str(href) + " in " + str(cls.__collection_book_list) + " to review_scraped = 1")
-                cls.__collection_book_list.update_one({"href": str(href)}, {"$set": {"review_scraped": 1}})
-            logging.info("Updated " + str(len(hrefs)) + " hrefs in " + str(cls.__collection_book_list) + " to review_scraped = 1")
+            for book_id in book_ids:
+                logging.info("Updating " + str(book_id) + " in " + str(cls.__collection_book_list) + " to review_scraped = 1")
+                cls.__collection_book_list.update_one({"book_id": str(book_id)}, {"$set": {"review_scraped": 1}})
+            logging.info("Updated " + str(len(book_ids)) + " hrefs in " + str(cls.__collection_book_list) + " to review_scraped = 1")
             return True
         except Exception as e:
-            logging.error("Failed to update " + str(len(hrefs)) + " hrefs in " + str(cls.__collection_book_list) + " to review_scraped = 1")
-            logging.error(e)
+            logging.error("Failed to update " + str(len(book_ids)) + " hrefs in " + str(cls.__collection_book_list) + " to review_scraped = 1")
+            # # logging.info(e)
             return False
 
     # For the reviews we need to retrieve the review hrefs from the book list collection only if the review_scraped value is 0
@@ -205,7 +205,7 @@ class MongoReco:
             return hrefs
         except Exception as e:
             logging.error("Failed to retrieve books from " + str(cls.__collection_book_list))
-            logging.error(e)
+            # logging.info(e)
             return False
         
     # We need to push the review data into the book reviews collection
@@ -217,6 +217,6 @@ class MongoReco:
             return True
         except Exception as e:
             logging.error("Failed to insert " + dict_result['book_id'] + " into " + str(cls.__collection_book_reviews))
-            logging.error(e)
+            # logging.info(e)
             return False
     

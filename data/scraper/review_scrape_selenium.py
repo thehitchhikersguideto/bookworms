@@ -113,7 +113,8 @@ if __name__ == "__main__":
         success = mongo_reco.push_review_data_into_book_reviews(output)
         if success:
             print("Successfully pushed: " + str(output['book_id']))
-            mongo_reco.update_book_list_review_scraped(book_id)
+            print("------Book ID------", book_id)
+            mongo_reco.update_book_list_review_scraped([book_id])
         else:
             print("Failed to push: " + str(output['book_id']))
             print("Continuing to next book...")
