@@ -123,9 +123,9 @@ if __name__ == "__main__":
     chrome_options.add_argument("--disable-gpu")
     chrome_options.add_argument("--start-maximized")
     seleniumLogger.setLevel(logging.WARNING)
-    driver = webdriver.Chrome(executable_path=r'C:\Users\ismae\Desktop\Selenium-bots\Drivers\chromedriver.exe', chrome_options=chrome_options)
+    driver = webdriver.Chrome(executable_path=r'\data\scraper\Drivers\chromedriver.exe', chrome_options=chrome_options)
     mongo_reco = MongoReco()
-    review_hrefs = mongo_reco.retrieve_review_hrefs_from_books(100)
+    review_hrefs = mongo_reco.retrieve_review_hrefs_from_books(1000)
     for href in review_hrefs:
         p = Page_Selenium(url_constructor(href), driver)
         checkForOverlay(driver)
