@@ -48,18 +48,37 @@ def get_reviews(page):
     for div in page.findAll('article', {'class':'ReviewCard'}):
         name_user = div.find('div', {'class':'ReviewerProfile__name'})
         # print(name_user.text)
-        url = name_user.find('a').get('href')
+        try:
+            url = name_user.find('a').get('href')
+        
+        except Exception:
+            print("No URL")
+            url = None
+
         # print(url)
-        text = div.find('span', {'class': 'Formatted'})
+        try:
+            text = div.find('span', {'class': 'Formatted'})
+        
+        except Exception:
+            print("No text")
+            text = None
         # print(text.text)
-        pivot_row = div.find('span', {'class': 'Text Text__body3'})
-        review_id = pivot_row.find('a').get('href').split('/')[-1]
+
+        try:
+            pivot_row = div.find('span', {'class': 'Text Text__body3'})
+        except Exception:
+            pivot_row = None
+        
+        try:
+            review_id = pivot_row.find('a').get('href').split('/')[-1]
+        except Exception:
+            review_id = None
         # print(review_id)
-        reviews['user_name'] = name_user.text
-        reviews['user_id'] = url.split('/')[-1]
-        reviews['text'] = text.text
-        reviews['book_id'] = book_id
-        reviews['review_id'] = review_id
+        reviews[str(review_id)] = {}
+        reviews[str(review_id)]['user_name'] = name_user.text
+        reviews[str(review_id)]['user_id'] = url.split('/')[-1]
+        reviews[str(review_id)]['text'] = text.text
+        reviews[str(review_id)]['book_id'] = book_id
     
     return reviews
 
@@ -75,7 +94,7 @@ def checkForOverlay(driver):
                 
         except Exception as e:
             print("Overlay Error")
-            print(e)
+            # print(e)
             return True
     except:
         print("No Overlay")
@@ -110,7 +129,6 @@ if __name__ == "__main__":
     for href in review_hrefs:
         p = Page_Selenium(url_constructor(href), driver)
         checkForOverlay(driver)
-        time.sleep(3)
         page = Page_Selenium.get_HTML(p, driver)
         book_id = href.split('/')[-2]
         output = wrapper(book_id, page)
