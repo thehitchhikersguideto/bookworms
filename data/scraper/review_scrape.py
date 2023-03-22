@@ -1,4 +1,4 @@
-from bs4 import BeautifulSoup
+""" from bs4 import BeautifulSoup
 import urllib.request as urllib2
 from mongo_handler import MongoReco
 
@@ -80,3 +80,4 @@ if __name__ == "__main__":
     review_provisioner(100)
 
 
+ """
