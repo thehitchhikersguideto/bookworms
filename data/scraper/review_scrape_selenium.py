@@ -5,6 +5,9 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
 from mongo_handler import MongoReco
 import time
+from selenium.webdriver.remote.remote_connection import LOGGER as seleniumLogger
+import logging
+
 
 class Page_Selenium:
     def __init__(self, page_url, driver):
@@ -100,6 +103,7 @@ if __name__ == "__main__":
     chrome_options.add_argument("--window-size=1920x1080")
     chrome_options.add_argument("--disable-gpu")
     chrome_options.add_argument("--start-maximized")
+    seleniumLogger.setLevel(logging.WARNING)
     driver = webdriver.Chrome(executable_path=r'C:\Users\ismae\Desktop\Selenium-bots\Drivers\chromedriver.exe', chrome_options=chrome_options)
     mongo_reco = MongoReco()
     review_hrefs = mongo_reco.retrieve_review_hrefs_from_books(100)
