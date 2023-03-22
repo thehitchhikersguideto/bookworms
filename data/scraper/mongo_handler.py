@@ -132,6 +132,56 @@ class MongoReco:
                 logging.error("Failed to insert " + dict_result[i]['Title'] + " into " + str(cls.__collection_books))
             # logging.info(e)
             return False
+        
+    # Used to update the review_scraped value to 0 if the book was accidently changed to 1, takes a list of hrefs or leave it blank to reset all
+    @classmethod
+    def reset_scraped_reviews(cls, hrefs = None):
+        if hrefs:
+            try: 
+                for href in hrefs:
+                    cls.__collection_book_list.update_one({"href": href}, {"$set": {"review_scraped": 0}})
+                    logging.info("Reset scraped to 0 for " + href + " in " + str(cls.__collection_book_list))
+                return True
+            except Exception as e:
+                logging.error("Failed to reset scraped to 0 for " + href + " in " + str(cls.__collection_book_list))
+                # logging.info(e)
+                return False
+            
+        else:
+            try:
+                cls.__collection_book_list.update_many({}, {"$set": {"review_scraped": 0}})
+                logging.info("Reset review_scraped to 0 for all hrefs in " + str(cls.__collection_book_list))
+                return True
+            except Exception as e:
+                logging.error("Failed to reset review_scraped to 0 for all hrefs in " + str(cls.__collection_book_list))
+                # logging.info(e)
+                return False
+    
+    # Used in case something gets misaligned and the scraped status of a book is not updated it can be done manually, input should be a list of hrefs
+    @classmethod
+    def reset_scraped_books(cls, hrefs = None):
+        if hrefs:
+            try: 
+                for href in hrefs:
+                    cls.__collection_book_list.update_one({"href": href}, {"$set": {"scraped": 0}})
+                    logging.info("Reset scraped to 0 for " + href + " in " + str(cls.__collection_book_list))
+                return True
+            except Exception as e:
+                logging.error("Failed to reset scraped to 0 for " + href + " in " + str(cls.__collection_book_list))
+                # logging.info(e)
+                return False
+
+        else:
+            try:
+                cls.__collection_book_list.update_many({}, {"$set": {"scraped": 0}})
+                logging.info("Reset scraped to 0 for all hrefs in " + str(cls.__collection_book_list))
+                return True
+            except Exception as e:
+                logging.error("Failed to reset scraped to 0 for all hrefs in " + str(cls.__collection_book_list))
+                # logging.info(e)
+                return False
+
+
     
     # Reviews are inserted into the BookReviews collection
     @classmethod

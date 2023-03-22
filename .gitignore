@@ -6,3 +6,4 @@ recommenders
 *.log
 __pycache__/
 to_do.txt
+DB_manage.py
