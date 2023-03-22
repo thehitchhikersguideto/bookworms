@@ -220,3 +220,27 @@ class MongoReco:
             # logging.info(e)
             return False
     
+    # fetch book info for data processing, leave amount as 0 to get all books
+    @classmethod
+    def get_books(cls, amount=0):
+        if amount == 0:
+            amount = cls.__collection_books.count()
+        try:
+            books = cls.__collection_books.find().limit(amount)
+            return books
+        except Exception as e:
+            logging.error("Failed to retrieve books from " + str(cls.__collection_books))
+            # logging.info(e)
+            return False
+    
+    @classmethod
+    def get_reviews(cls, amount=0):
+        if amount == 0:
+            amount = cls.__collection_book_reviews.count()
+        try:
+            reviews = cls.__collection_book_reviews.find().limit(amount)
+            return reviews
+        except Exception as e:
+            logging.error("Failed to retrieve reviews from " + str(cls.__collection_book_reviews))
+            # logging.info(e)
+            return False

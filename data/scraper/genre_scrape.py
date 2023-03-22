@@ -78,7 +78,7 @@ def fetchBooks(startPage = 1, endPage = 15, startGenre = 0):
                     books = grab_books(list)
                     logging.info("Book count: " + str(len(books)))
                     # Write to href of each book to a file
-                    MongoReco.insert_href_into_book_list(books, many=True)
+                    mongoreco.insert_href_into_book_list(books, many=True)
                     """ with open('books.txt', 'a') as f:
                         for book in books:
                             if count == 300:
@@ -100,4 +100,5 @@ if __name__ == '__main__':
     # There are around 1400 genres, each genre has around 20 lists, each list has 50-200 books
     # Set your start params in fetchBooks() to start from where you left off
     # If an error occurs, the script will log the error and the page and genre it was on and automatically start from there
+    mongoreco = MongoReco()
     fetchBooks(10,11)
