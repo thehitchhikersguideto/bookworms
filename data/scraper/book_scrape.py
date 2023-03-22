@@ -6,6 +6,7 @@ from mongo_handler import MongoReco
 import logging
 import datetime 
 import sys
+from selenium.webdriver.remote.remote_connection import LOGGER as seleniumLogger
 
 def initSoup(html):
     print('Initializing soup...')
@@ -364,7 +365,7 @@ def initDriver(startingBook):
     chrome_options.add_argument("--disable-gpu")
     # chrome_options.add_argument("--disable-extensions")
     chrome_options.add_argument("--start-maximized")
-
+    seleniumLogger.setLevel(logging.WARNING)
     driver = webdriver.Chrome(options=chrome_options)
     driver.get('https://www.goodreads.com'+startingBook)
     driver.implicitly_wait(10)
