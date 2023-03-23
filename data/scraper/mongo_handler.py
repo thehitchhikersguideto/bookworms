@@ -15,14 +15,13 @@ class MongoReco:
     __collection_book_reviews = None
     __collection_book_list = None
 
-    def __new__(self):
-        if self.__instance is None:
+    def __new__(cls):
+        if cls.__instance is None:
             logging.info("Initializing MongoReco")
-            self.__instance = object.__new__(self)
-            self.start_mongo(self)
-        return self.__instance
+            cls.__instance = object.__new__(cls)
+            cls.start_mongo(cls)
+        return cls.__instance
     
-    # init
 
     def load_env_vars(self):
         # Load MongoDB credentials from .env file
