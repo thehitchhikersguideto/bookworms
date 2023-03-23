@@ -11,7 +11,6 @@ logging.basicConfig(filename='mongoDBHandler.log', filemode='w', level=logging.D
 class MongoReco:
 
     __instance = None
-    __collections = None
     __collection_books = None
     __collection_book_reviews = None
     __collection_book_list = None
@@ -27,13 +26,13 @@ class MongoReco:
 
     def load_env_vars(self):
         # Load MongoDB credentials from .env file
-        if os.environ.get('password') and os.environ.get('user'):
-            del os.environ["password"]
-            del os.environ["user"]
+        if os.environ.get('MongoDBpassword') and os.environ.get('MongoDBuser'):
+            del os.environ["MongoDBpassword"]
+            del os.environ["MongoDBuser"]
         
         load_dotenv()
-        password = os.environ.get('password')
-        user = os.environ.get('user')
+        password = os.environ.get('MongoDBpassword')
+        user = os.environ.get('MongoDBuser')
         logging.info("Loaded MongoDB credentials from .env file")
         return password, user
 
@@ -44,7 +43,7 @@ class MongoReco:
         SOURCE_COLLECTION_BOOKLIST = 'BookList'
         MONGO_URI = f"mongodb+srv://{user}:{password}@recosystems.hyjorhd.mongodb.net/?retryWrites=true&w=majority"
         logging.info("Initializing MongoDB connection")
-        logging.info("MongoDB URI: " + MONGO_URI)
+        # logging.info("MongoDB URI: " + MONGO_URI)
         logging.info("MongoDB Database: " + SOURCE_DB)
         logging.info("User: " + user)
         client = pymongo.MongoClient(MONGO_URI)
@@ -61,7 +60,6 @@ class MongoReco:
     def start_mongo(self):
         password, user = self.load_env_vars(self)
         collections = self.load_mongo(self,password,user)
-        self.__collections = collections
         self.__collection_books = collections[0]
         self.__collection_book_reviews = collections[1]
         self.__collection_book_list = collections[2]
