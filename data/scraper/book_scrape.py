@@ -365,6 +365,10 @@ def initDriver(startingBook):
     chrome_options.add_argument("--disable-gpu")
     # chrome_options.add_argument("--disable-extensions")
     chrome_options.add_argument("--start-maximized")
+    chrome_options.add_argument("--disable-blink-features=AutomationControlled")
+    chrome_options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36")
+    chrome_options.add_experimental_option("excludeSwitches", ["enable-automation"])
+    chrome_options.add_experimental_option('useAutomationExtension', False)
     seleniumLogger.setLevel(logging.WARNING)
     driver = webdriver.Chrome(options=chrome_options)
     driver.get('https://www.goodreads.com'+startingBook)
@@ -489,4 +493,5 @@ def book_info_provisioner(count = 0, max_count = 100):
      
 if __name__ == "__main__":
     mongoreco = MongoReco()
+    # Max count should be multiples of ten unless you change the retrieve_books_from_book_lists(10) to a different number, defaults to 10 and 100 
     book_info_provisioner()
