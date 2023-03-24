@@ -7,3 +7,5 @@ recommenders
 __pycache__/
 to_do.txt
 DB_manage.py
+book_scrape2.py
+*_deprecated.py

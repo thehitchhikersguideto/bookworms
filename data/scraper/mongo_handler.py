@@ -118,15 +118,18 @@ class MongoReco:
             if many:
                 cls.__collection_books.insert_many(dict_result)
                 for i in range(len(dict_result)):
-                    logging.info("Inserted " + dict_result[i]['Title'] + " into " + str(cls.__collection_books))
+                    logging.info("Inserted " + dict_result[i]['title'] + " into " + str(cls.__collection_books))
                 return True
             else:
                 cls.__collection_books.insert_one(dict_result)
-                logging.info("Inserted " + dict_result['Title'] + " into " + str(cls.__collection_books))
+                logging.info("Inserted " + dict_result['title'] + " into " + str(cls.__collection_books))
                 return True
         except Exception as e:
-            for i in range(len(dict_result)):
-                logging.error("Failed to insert " + dict_result[i]['Title'] + " into " + str(cls.__collection_books))
+            if many:
+                for i in range(len(dict_result)):
+                    logging.info("Failed to insert " + dict_result[i]['title'] + " into " + str(cls.__collection_books))
+            else:
+                logging.info("Failed to insert " + dict_result['title'] + " into " + str(cls.__collection_books))
             # logging.info(e)
             return False
         
@@ -215,15 +218,15 @@ class MongoReco:
 
     # The update function works under the idea that some books may not succeed in being scraped thus this function will take in a list of hrefs and update the scraped value to 1
     @classmethod
-    def update_book_list_book_scraped(cls,hrefs):
+    def update_book_list_book_scraped(cls,book_ids):
         try:
-            for href in hrefs:
-                logging.info("Updating " + str(href) + " in " + str(cls.__collection_book_list))
-                cls.__collection_book_list.update_one({"href": str(href)}, {"$set": {"scraped": 1}})
-            logging.info("Updated " + str(len(hrefs)) + " hrefs in " + str(cls.__collection_book_list))
+            for book_id in book_ids:
+                logging.info("Updating " + str(book_id) + " in " + str(cls.__collection_book_list))
+                cls.__collection_book_list.update_one({"book_id": str(book_id)}, {"$set": {"scraped": 1}})
+            logging.info("Updated " + str(len(book_ids)) + " hrefs in " + str(cls.__collection_book_list))
             return True
         except Exception as e:
-            logging.error("Failed to update " + str(len(hrefs)) + " hrefs in " + str(cls.__collection_book_list))
+            logging.error("Failed to update " + str(len(book_ids)) + " hrefs in " + str(cls.__collection_book_list))
             # # logging.info(e)
             return False
     
@@ -291,3 +294,12 @@ class MongoReco:
             logging.error("Failed to retrieve reviews from " + str(cls.__collection_book_reviews))
             # logging.info(e)
             return False
+
+    # Very expensive method to scan a given collection to make sure every entry follows a given structure, if the structure is not followed, the entry is deleted
+    # After deleting the entry, the method will return a list of the deleted entries 
+    # Additionally the method will update the scraped value to 0 for the deleted entries coresponding to its collection
+"""     @classmethod
+    def verify_content_reviews(cls):
+        try:
+            deleted = []
+            reviews = cls.__collection_book_reviews.find() """
