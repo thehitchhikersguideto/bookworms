@@ -1,0 +1,67 @@
+review_scrape_selenium2.py is the working review scraper
+book_scrape is the working book scraper
+genre_scrape is the working genre scraper
+mongo_handler is a support function for the scrapers which allows for interaction with our DB
+
+Your .env file should have the following structure:
+MongoDBpassword=-------
+MongoDBuser=------
+*No Spaces*
+
+
+review_scrape_selenium2 will scrape a specified amount of books but only the reviews and the rating distributions the structure is as follows:
+book_id: ---------
+reviews: ---------
+    review_id: ------
+        user_name: ------
+        user_id: ------
+        text: ------
+        rating: ------
+    review_id: ------
+    review_id: ------
+    review_id: ------
+    .....
+ratings:
+    5star: #
+    4star: #
+    3star: #
+    2star: #
+    1star: #
+    Ratings_Count: #
+    Total_Review_Count: #
+
+For use change the value of the following line to alter how many reviews are collected: for reference 2000 reviews takes around an hour
+review_hrefs = mongoreco.retrieve_review_hrefs_from_books(2000)
+
+book_scrape
+book_scrape contains the following info
+
+        'Href': href,
+        'Title': title,
+        'Series_name': series,
+        'ISBN': isbn,
+        'Language': language,
+        'Pages': pages,
+        'Publisher': publisher,
+        'Year_published': year_published,
+        'Primary_lists': lists,
+        'All_lists_link': list_link,
+        'Rating': rating,
+        'Num_reviews': reviews,
+        'Num_ratings': ratings,
+        'Awards': awards,
+        'Author': author,
+        'Price': price,
+        'Genres': genres,
+        'Description': description,
+        'Current_readers': current_readers,
+        'Wanted_to_read': wanted_to_read,
+        'Reviews_href': reviews_href,
+        'Time_of_scrape': date_time
+    
+For use change the value of the number in the following line, to specify how many books to scrape, if an error is thrown check the logs and send me that file
+book_batch = mongoreco.retrieve_books_from_book_lists(50)
+
+genre_scrape
+genre_scrape is pretty straightforward, there are 14 pages of genres, in the start up of the function input the starting and ending page
+of the genres you want to scrape. There are an insane number of books that are given to scrape 
