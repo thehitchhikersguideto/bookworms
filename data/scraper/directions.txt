@@ -61,3 +61,7 @@ book_scrape contains the following info
     
 For use change the value of the number in the following line, to specify how many books to scrape, if an error is thrown check the logs and send me that file
 book_batch = mongoreco.retrieve_books_from_book_lists(50)
+
+genre_scrape
+genre_scrape is pretty straightforward, there are 14 pages of genres, in the start up of the function input the starting and ending page
+of the genres you want to scrape. There are an insane number of books that are given to scrape 
