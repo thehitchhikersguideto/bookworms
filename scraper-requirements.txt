@@ -1,0 +1,5 @@
+beautifulsoup4==4.11.2
+urllib3==1.26.14
+selenium==4.8.2
+pymongo==4.3.3
+python-dotenv==1.0.0
