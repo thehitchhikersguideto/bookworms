@@ -473,7 +473,7 @@ if __name__ == "__main__":
     driver.execute_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
     driver.implicitly_wait(10)
     book_scraper = book_scrape(driver)
-    book_batch = mongoreco.retrieve_books_from_book_lists(50)
+    book_batch = mongoreco.retrieve_books_from_book_lists(1000)
     counter = 0
     for book in book_batch:
         book_scraper.update(book)

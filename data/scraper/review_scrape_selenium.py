@@ -181,7 +181,7 @@ if __name__ == "__main__":
     driver = webdriver.Chrome(executable_path=r'\data\scraper\Drivers\chromedriver.exe', chrome_options=chrome_options)
     driver.execute_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
     review_scraper = review_scrape(driver)
-    review_hrefs = mongoreco.retrieve_review_hrefs_from_books(20)
+    review_hrefs = mongoreco.retrieve_review_hrefs_from_books(2000)
 
     for href in review_hrefs:
         review_scraper.update(href)
