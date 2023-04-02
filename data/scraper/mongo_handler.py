@@ -14,6 +14,8 @@ class MongoReco:
     __collection_books = None
     __collection_book_reviews = None
     __collection_book_list = None
+    # __client = None
+    # __db = None
 
     def __new__(cls):
         if cls.__instance is None:
@@ -46,7 +48,9 @@ class MongoReco:
         logging.info("MongoDB Database: " + SOURCE_DB)
         logging.info("User: " + user)
         client = pymongo.MongoClient(MONGO_URI)
+        # self.__client = client
         db = client[SOURCE_DB]
+        # self.__db = db
         collection_books = db[SOURCE_COLLECTION]
         collection_book_reviews = db[SOURCE_COLLECTION_REVIEWS]
         collection_book_list = db[SOURCE_COLLECTION_BOOKLIST]
