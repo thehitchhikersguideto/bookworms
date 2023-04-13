@@ -21,14 +21,14 @@ def search_books():
         {"title": {"$regex": query, "$options": "i"}},
         {"author": {"$regex": query, "$options": "i"}}
     ]})
+    print("Results from MongoDB:", list(results))
 
     # Format the results as expected by the frontend
     formatted_results = [
         {
             "id": str(book["_id"]),
             "title": book["title"],
-            "authors": [book["author"]],
-            "image": book.get("image", None),
+            "authors": [book["author"]]
         }
         for book in results
     ]

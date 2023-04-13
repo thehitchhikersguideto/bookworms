@@ -6,6 +6,7 @@ import BookList from './BookList';
 export default function BookSearch() {
     const [query, setQuery] = useState('');
     const [books, setBooks] = useState([]);
+    const apiurl = `${process.env.REACT_APP_API_URL}`;
 
     const handleInputChange = (event) => {
         setQuery(event.target.value);
@@ -13,7 +14,7 @@ export default function BookSearch() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        const response = await fetch(`/api/search?query=${query}`);
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/api/search?query=${query}`);
         const data = await response.json();
         const books = data.map((book) => ({
             id: book.id,
