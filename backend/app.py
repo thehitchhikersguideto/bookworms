@@ -21,10 +21,13 @@ def search_books():
     if not query:
         return jsonify([])
 
-    results = books_collection.find({"$or": [
-        {"title": {"$regex": query, "$options": "i"}},
-        {"author": {"$regex": query, "$options": "i"}}
-    ]})
+    results = books_collection.find(
+        {"$or": [
+            {"title": {"$regex": query, "$options": "i"}},
+            {"author": {"$regex": query, "$options": "i"}}
+        ]},
+        {"_id": 1, "title": 1, "author": 1}
+    )
     print("Results from MongoDB:", list(results))
 
     # Format the results as expected by the frontend
@@ -38,6 +41,7 @@ def search_books():
     ]
 
     return jsonify(formatted_results)
+
 
 # Endpoint for getting book recommendations
 @app.route('/api/recommend', methods=['POST'])
