@@ -17,6 +17,10 @@ books_collection = db['BookList']
 @app.route('/api/search', methods=['GET'])
 def search_books():
     query = request.args.get('query')
+
+    if not query:
+        return jsonify([])
+
     results = books_collection.find({"$or": [
         {"title": {"$regex": query, "$options": "i"}},
         {"author": {"$regex": query, "$options": "i"}}
