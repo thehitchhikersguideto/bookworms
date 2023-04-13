@@ -19,8 +19,7 @@ export default function BookSearch() {
     setError(null);
 
     try {
-        const response = await fetch(`${process.env.REACT_APP_API_URL}/api/search?query=${query}`);
-      console.log('Raw response:', response); // Add this line to log the raw response
+        const response = await fetch(`${apiurl}/api/search?query=${query}`);
 
       if (!response.ok) {
         throw new Error('Failed to retrieve books');
