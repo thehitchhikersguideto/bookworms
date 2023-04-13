@@ -8,7 +8,8 @@ app = Flask(__name__)
 CORS(app)  # Enable CORS
 
 # Connect to the MongoDB instance
-client = MongoClient("mongodb://botly:BjzvLQxlBIxWDmfm@<host>:<port>/<dbname>")
+client = MongoClient("mongodb+srv://botly:BjzvLQxlBIxWDmfm@recosystems.hyjorhd.mongodb.net/?retryWrites=true&w=majority")
+
 db = client['Goodreads']
 books_collection = db['BookList']
 
