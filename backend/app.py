@@ -18,14 +18,10 @@ books_collection = db['Books']
 def search_books():
     query = request.args.get('query')
 
-    if not query:
-        return jsonify([])
-
     results = books_collection.find({"$or": [
         {"title": {"$regex": query, "$options": "i"}},
         {"author": {"$regex": query, "$options": "i"}}
     ]})
-    print("Results from MongoDB:", list(results))
 
     # Format the results as expected by the frontend
     formatted_results = [
