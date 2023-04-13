@@ -1,11 +1,11 @@
 @font-face {
-    font-family: 'MyFonts';
-    src:url('../../fonts/gym.woff');
+    font-family: 'titles';
+    src:url('../../fonts/titles.ttf');
   }
 
 @font-face {
   font-family: 'text';
-  src:url('../../fonts/Prototype.ttf');
+  src:url('../../fonts/text.ttf');
 }
 
 .container {
@@ -23,7 +23,7 @@
     font-size: 120px;
     text-align: center;
     color: white /*( to bottom #4c0465, rgb(60, 25, 55))*/;
-    font-family: 'MyFonts', serif;
+    font-family: 'titles', serif;
     text-shadow: 5px 5px 6px rgba(0, 0, 0, 0.5);
     margin-top: 250px;
     /*-webkit-text-stroke: 0.01vw #ffffff;*/
@@ -34,7 +34,7 @@
   font-size: 60px;
   text-align: center;
   color: white /*( to bottom #4c0465, rgb(60, 25, 55))*/;
-    font-family: 'MyFonts', serif;
+    font-family: 'titles', serif;
   text-shadow: 5px 5px 6px rgba(0, 0, 0, 0.5);
   margin-top: 250px;
   /*-webkit-text-stroke: 0.01vw #ffffff;*/
@@ -45,7 +45,7 @@
   font-size:40px;
   text-align: center;
   color: white;
-    font-family: 'MyFonts', serif;
+    font-family: 'text', serif;
   animation: 5s anim-lineUp ease-out;
   margin-bottom:200px;
   text-shadow: 5px 5px 6px rgba(0, 0, 0, 0.5);
@@ -155,7 +155,7 @@
     font-family: 'text', serif;
     margin-bottom: 20px;
     font-size: 30px;
-    color: #4c0465;
+    color: #000000;
     border-radius: 10px;
 }
 

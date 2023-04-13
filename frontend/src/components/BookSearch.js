@@ -9,6 +9,18 @@ export default function BookSearch() {
   const [query, setQuery] = useState('');
   const [books, setBooks] = useState([]);
   const [error, setError] = useState(null);
+  const [ratedBooks, setRatedBooks] = useState([]);
+
+  const handleBookRated = (book, rating) => {
+    setRatedBooks((prevRatedBooks) => [
+      ...prevRatedBooks,
+      { ...book, rating },
+    ]);
+  };
+
+  const handleRemoveRatedBook = (bookToRemove) => {
+    setRatedBooks((prevRatedBooks) => prevRatedBooks.filter((book) => book.id !== bookToRemove.id));
+  };
 
   const handleInputChange = (event) => {
     setQuery(event.target.value);
@@ -26,7 +38,7 @@ export default function BookSearch() {
       }
 
       const data = await response.json();
-      console.log('Parsed response:', data); // Add this line to log the parsed response
+      console.log('Parsed response:', data);
       const books = data.map((book) => ({
         id: book.id,
         title: book.title,
@@ -38,6 +50,10 @@ export default function BookSearch() {
       setError(err.message);
     }
   };
+
+  const filteredBooks = books.filter(
+    (book) => !ratedBooks.some((ratedBook) => ratedBook.id === book.id)
+  );
 
   return (
     <div className="FormS">
@@ -51,10 +67,16 @@ export default function BookSearch() {
           placeholder="Search for books"
         />
       </form>
+      {ratedBooks.length > 0 && (
+        <>
+          <h3>Your Rated Books</h3>
+          <BookList books={ratedBooks} onBookRated={handleBookRated} isRatedList={true} onRemoveRatedBook={handleRemoveRatedBook} />
+        </>
+      )}
       {error ? (
         <div className="error">{error}</div>
       ) : (
-        <BookList books={books} />
+        <BookList books={filteredBooks} onBookRated={handleBookRated} />
       )}
     </div>
   );

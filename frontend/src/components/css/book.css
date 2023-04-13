@@ -1,25 +1,99 @@
-.book-list {
+.scrollable-book-list {
+    max-height: 400px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    margin-top: 20px;
+    padding: 0 15px;
+    box-sizing: border-box;
+  }
+  
+  .book-list {
     list-style: none;
-    padding: 0;
-}
-
-.book-item {
     display: flex;
-    margin-bottom: 16px;
-}
-
-.book-image {
-    width: 80px;
-    height: 120px;
-    margin-right: 16px;
-}
-
-.book-title {
-    font-size: 18px;
-    margin: 0 0 4px;
-}
-
-.book-authors {
-    font-size: 14px;
+    flex-wrap: wrap;
     margin: 0;
-}
+    padding: 0;
+  }
+  
+  .book-item {
+    margin: 0 15px 15px 0;
+  }
+  
+  .book-block {
+    display: inline-block;
+    text-decoration: none;
+    color: inherit;
+    border: 1px solid #093293;
+    padding: 15px;
+    box-sizing: border-box;
+    width: 150px;
+    height: 250px;
+    position: relative;
+  }
+  
+  .book-image {
+    display: block;
+    max-width: 100%;
+    max-height: 100px;
+    margin: 0 auto 10px;
+  }
+  
+  .book-title,
+  .book-authors {
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+  }
+  
+  .book-title {
+    font-size: 1rem;
+    margin-bottom: 5px;
+    font-family: "text", serif;
+  }
+  
+  .book-authors {
+    font-size: 0.9rem;
+  }
+  
+  .selected {
+    cursor: default;
+  }
+  
+  .selected .book-image,
+  .selected .book-title,
+  .selected .book-authors {
+    display: none;
+  }
+  
+  .rating-popup {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .remove-rated-book {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: red;
+    color: white;
+    border: none;
+    font-weight: bold;
+    padding: 2px 5px;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .book-block:hover .remove-rated-book {
+    opacity: 1;
+  }
+  

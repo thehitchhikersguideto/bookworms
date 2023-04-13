@@ -6,7 +6,10 @@
      font-family: 'text', serif;
     color: white;
     max-width: 225px;
-    background-color: rgb(77, 20, 104);
+    /* background-color: rgb(67, 198, 111); */
+    background: #649173; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #ddcd5b, #3b8e57); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #9add5b, #3b8e57); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   }
   
   @media screen and (max-width: 650px) {
@@ -17,7 +20,7 @@
   }
   
   .cardT {
-    box-shadow: 0 0 6px 8px rgb(31, 0, 188);
+    box-shadow: 0 0 6px 8px rgb(194, 216, 97);
   }
   
   .containerT {
@@ -43,7 +46,7 @@
       background-color: #ffffff;
       font-family: 'text', serif;
     text-align: center;
-    color: purple;
+    color: rgb(0, 0, 0);
     font-size: 20px;
     cursor: pointer;
     width: 100%;

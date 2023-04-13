@@ -1,5 +1,5 @@
 .scroll-to-buttons {
-  background-color: #330c41;
+  background-color: #427553;
   padding: 10px;
   display: flex;
   justify-content: space-around;
@@ -10,12 +10,12 @@
   top: 0;
   left: 0;
   right: 0;
-  box-shadow: 0 0 6px 4px rgb(33, 1, 192);
+  box-shadow: 0 0 6px 4px #1d7437;
 }
 
 .scroll-to-buttons button {
   display: inline-block;
-  background-color: #441276;
+  background-color: #3d6c41;
   color: white;
   padding: 8px 16px;
   border: none;
@@ -27,5 +27,5 @@
 }
 
 .scroll-to-buttons button:hover {
-  background-color: #2b1545;
+  background-color: #517748;
 }
