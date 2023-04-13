@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './styles.css';
+import './css/styles.css';
 
 export default function FormSection() {
   const [age, setAge] = useState('');
@@ -13,9 +13,9 @@ export default function FormSection() {
   }
 
   return (
-    <section class = "FormS">
+    <section className = "FormS">
       <h2>Recommend Books</h2>
-      <form class="req_btn" onSubmit={handleSubmit}>
+      <form className="req_btn" onSubmit={handleSubmit}>
         <label className='form_input' >
           Book Title:
           <input className="input" type="number" value={age} onChange={(event) => setAge(event.target.value)} />
@@ -41,7 +41,7 @@ export default function FormSection() {
           </select>
         </label>
         <br />
-        <button class="request_ex" type="submit">Recommend Books</button>
+        <button className="request_ex" type="submit">Recommend Books</button>
       </form>
     </section>
   );

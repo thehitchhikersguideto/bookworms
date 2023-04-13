@@ -1,11 +1,9 @@
 
  .columnT {
     float: left;
-    margin: 20px;
-    margin-top: 30px;
-    margin-bottom: 125px;
-    padding: 0 8px;
-    font-family: 'text';
+     margin: 30px 20px 125px;
+     padding: 0 8px;
+     font-family: 'text', serif;
     color: white;
     max-width: 225px;
     background-color: rgb(77, 20, 104);
@@ -19,7 +17,7 @@
   }
   
   .cardT {
-    box-shadow: 0 0px 6px 8px rgb(31, 0, 188);
+    box-shadow: 0 0 6px 8px rgb(31, 0, 188);
   }
   
   .containerT {
@@ -34,7 +32,7 @@
   
   .titleT {
     color: rgb(255, 255, 255);
-    font-family: 'text';
+      font-family: 'text', serif;
   }
   
   .buttonT {
@@ -42,9 +40,8 @@
     outline: 0;
     display: inline-block;
     padding: 8px;
-    color: white;
-    background-color: #ffffff;
-    font-family: 'text';
+      background-color: #ffffff;
+      font-family: 'text', serif;
     text-align: center;
     color: purple;
     font-size: 20px;

@@ -1,7 +1,7 @@
 import React from 'react';
 import TitleSection from './components/Title';
 import DescriptionSection from './components/Description';
-import FormSection from './components/Form';
+import BookSearch from './components/BookSearch';
 import GithubSection from './components/Github';
 import AboutUsSection from './components/About';
 import ScrollToButton from "./components/ScrollButton";
@@ -27,7 +27,7 @@ export default function App() {
         <DescriptionSection />
       </div>
       <div id="section3">
-        <FormSection />
+        <BookSearch />
       </div>
       <div id="section4">
         <GithubSection />

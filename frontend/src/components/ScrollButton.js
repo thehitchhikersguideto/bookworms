@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import './ScrollToButtons.css';
+import './css/ScrollToButtons.css';
 
 const ScrollToButtons = ({ buttons }) => {
   const [scrollPosition, setScrollPosition] = useState(0);
