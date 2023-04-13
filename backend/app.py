@@ -11,12 +11,16 @@ CORS(app)  # Enable CORS
 client = MongoClient("mongodb+srv://botly:BjzvLQxlBIxWDmfm@recosystems.hyjorhd.mongodb.net/?retryWrites=true&w=majority")
 
 db = client['Goodreads']
-books_collection = db['BookList']
+books_collection = db['Books']
 
 # Endpoint for searching books in the database
 @app.route('/api/search', methods=['GET'])
 def search_books():
     query = request.args.get('query')
+
+    if not query:
+        return jsonify([])
+
     results = books_collection.find({"$or": [
         {"title": {"$regex": query, "$options": "i"}},
         {"author": {"$regex": query, "$options": "i"}}
