@@ -10,7 +10,7 @@
   top: 0;
   left: 0;
   right: 0;
-  box-shadow: 0 0px 6px 4px rgb(33, 1, 192);
+  box-shadow: 0 0 6px 4px rgb(33, 1, 192);
 }
 
 .scroll-to-buttons button {
@@ -22,7 +22,7 @@
   border-radius: 4px;
   cursor: pointer;
   font-size: 16px;
-  font-family: "text";
+  font-family: "text", serif;
   margin: 0 10px;
 }
 
