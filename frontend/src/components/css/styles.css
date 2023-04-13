@@ -1,11 +1,11 @@
 @font-face {
     font-family: 'MyFonts';
-    src:url('../fonts/gym.woff');
+    src:url('../../fonts/gym.woff');
   }
 
 @font-face {
   font-family: 'text';
-  src:url('../fonts/Prototype.ttf');
+  src:url('../../fonts/Prototype.ttf');
 }
 
 .container {
@@ -23,7 +23,7 @@
     font-size: 120px;
     text-align: center;
     color: white /*( to bottom #4c0465, rgb(60, 25, 55))*/;
-    font-family: 'MyFonts';
+    font-family: 'MyFonts', serif;
     text-shadow: 5px 5px 6px rgba(0, 0, 0, 0.5);
     margin-top: 250px;
     /*-webkit-text-stroke: 0.01vw #ffffff;*/
@@ -34,7 +34,7 @@
   font-size: 60px;
   text-align: center;
   color: white /*( to bottom #4c0465, rgb(60, 25, 55))*/;
-  font-family: 'MyFonts';
+    font-family: 'MyFonts', serif;
   text-shadow: 5px 5px 6px rgba(0, 0, 0, 0.5);
   margin-top: 250px;
   /*-webkit-text-stroke: 0.01vw #ffffff;*/
@@ -45,7 +45,7 @@
   font-size:40px;
   text-align: center;
   color: white;
-  font-family: 'MyFonts';
+    font-family: 'MyFonts', serif;
   animation: 5s anim-lineUp ease-out;
   margin-bottom:200px;
   text-shadow: 5px 5px 6px rgba(0, 0, 0, 0.5);
@@ -79,7 +79,7 @@
     font-size: 35px;
     text-align: center;
     color: rgb(255, 255, 255);
-    font-family: 'text';
+    font-family: 'text', serif;
     text-shadow: 3px 3px 4px rgba(0, 0, 0, 0.5);
     padding: 15px;
     min-width:100px; 
@@ -100,34 +100,45 @@
     color:rgb(255, 255, 255);
     text-align: center;
     margin-bottom: 300px;
-    font-family: 'text';
+    font-family: 'text', serif;
     font-size: 25px;
+}
+
+.input_book {
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    width: 80%;
+    box-sizing: border-box;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 .form_input {
     font-size: 15px;
-    font-family: 'text';
+    font-family: 'text', serif;
     text-align: left;
     margin-bottom: 100px;
 }
 
 .input {
   margin-left: 20px;
-  align-items: right;
+  align-items: center;
 }
 
 .request_ex{
     color:#4c0465;
-    font-family: 'text';
+    font-family: 'text', serif;
     text-align: center;
     border-radius: 5px;
-    margin: 25px;
+    margin: 10px;
     font-size: 20px;
 }
 
 .req_btn{
     color: #ffffff;
-    font-family: 'text';
+    font-family: 'text', serif;
 
 }
 
@@ -135,13 +146,13 @@
     color:rgb(255, 255, 255);
     text-align: center;
     margin-bottom:300px;
-    font-family: 'text';
+    font-family: 'text', serif;
     font-size: 25px;
 }
 
 .gitButton {
     background-color: #ffffff;
-    font-family: 'text';
+    font-family: 'text', serif;
     margin-bottom: 20px;
     font-size: 30px;
     color: #4c0465;
@@ -158,5 +169,5 @@
     margin-bottom:500px;
     margin-left:10px;
     margin-right:10px;
-    font-family: 'text';
+    font-family: 'text', serif;
 }

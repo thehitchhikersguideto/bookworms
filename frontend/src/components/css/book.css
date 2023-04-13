@@ -1,0 +1,25 @@
+.book-list {
+    list-style: none;
+    padding: 0;
+}
+
+.book-item {
+    display: flex;
+    margin-bottom: 16px;
+}
+
+.book-image {
+    width: 80px;
+    height: 120px;
+    margin-right: 16px;
+}
+
+.book-title {
+    font-size: 18px;
+    margin: 0 0 4px;
+}
+
+.book-authors {
+    font-size: 14px;
+    margin: 0;
+}

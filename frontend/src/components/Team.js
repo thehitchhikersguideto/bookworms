@@ -1,5 +1,5 @@
 import React from 'react';
-import './team.css'
+import './css/team.css'
 
 const TeamPage = ({member}) => {
     return (
@@ -10,7 +10,7 @@ const TeamPage = ({member}) => {
               <h2>{member.name}</h2>
               <p className="titleT">{member.role}</p>
               <p>{member.link}</p>
-              <a href={member.link}><button className="buttonT" onclick={member.link}>Contact</button></a>
+              <a href={member.link}><button className="buttonT" onClick={member.link}>Contact</button></a>
             </div>
           </div>
         </div>
