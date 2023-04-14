@@ -40,11 +40,24 @@ def search_books():
 
 
 # Endpoint for getting book recommendations
+# @app.route('/api/recommend', methods=['POST'])
+# def recommend_books():
+#     user_books = request.json['books']
+#     recommendations = recommender.get_recommendations(user_books)
+#     return jsonify(recommendations)
+
 @app.route('/api/recommend', methods=['POST'])
 def recommend_books():
-    user_books = request.json['books']
-    recommendations = recommender.get_recommendations(user_books)
-    return jsonify(recommendations)
+    try:
+        user_books = request.json['books']
+        recommendations = recommender.get_recommendations(user_books)
+        return jsonify(recommendations)
+    except KeyError:
+        # Return a 400 Bad Request response if the 'books' key is missing from the request body
+        return jsonify({'error': 'Missing required field: books'}), 400
+    except Exception as e:
+        # Return a 500 Internal Server Error response if an unexpected error occurs
+        return jsonify({'error': str(e)}), 500
 
 if __name__ == '__main__':
     app.run(debug=True)

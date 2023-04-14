@@ -53,7 +53,7 @@ function BookList({ books, onBookRated, isRatedList = false, onRemoveRatedBook }
                   )}
                   <div>
                     <h3 className="book-title">{book.title}</h3>
-                    <p className="book-authors">{book.authors}</p>
+                    <p className="book-authors">{book.author}</p>
                   </div>
                 </>
               )}

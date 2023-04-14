@@ -18,6 +18,10 @@
   .book-item {
     margin: 0 15px 15px 0;
   }
+
+  .input_book {
+    font-family: text;
+  }
   
   .book-block {
     display: inline-block;

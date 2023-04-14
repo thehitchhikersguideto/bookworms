@@ -6,6 +6,7 @@
      font-family: 'text', serif;
     color: white;
     max-width: 225px;
+    align-items: center;
     /* background-color: rgb(67, 198, 111); */
     background: #649173; /* fallback for old browsers */
   background: -webkit-linear-gradient(to right, #ddcd5b, #3b8e57); /* Chrome 10-25, Safari 5.1-6 */

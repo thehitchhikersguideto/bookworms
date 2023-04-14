@@ -3,6 +3,7 @@ import './css/styles.css';
 import './css/book.css';
 import BookList from './BookList';
 import RecommendedBooks from './RecommendedBooks';
+import RecommenderButton from './RecommenderButton';
 
 export default function BookSearch() {
   const apiurl = `${process.env.REACT_APP_API_URL}`;
@@ -44,38 +45,13 @@ export default function BookSearch() {
       const books = data.map((book) => ({
         id: book.id,
         title: book.title,
-        authors: book.authors.join(', '),
+        author: book.author,
         image: book.image,
       }));
       setBooks(books);
     } catch (err) {
       setError(err.message);
     }
-  };
-
-  const handleRecommend = async () => {
-    const response = await fetch(`${apiurl}/api/recommend`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(ratedBooks),
-    });
-
-    if (!response.ok) {
-      throw new Error('Failed to retrieve recommendations');
-    }
-
-    const data = await response.json();
-    console.log('Parsed response:', data);
-    const books = data.map((book) => ({
-      id: book.id,
-      title: book.title,
-      author: book.author,
-      image: book.image,
-    }));
-    setRecommendations(books);
-    setShowRecommendations(true);
   };
 
   const filteredBooks = books.filter(
@@ -107,9 +83,7 @@ export default function BookSearch() {
                 isRatedList={true}
                 onRemoveRatedBook={handleRemoveRatedBook}
               />
-              <button onClick={handleRecommend} className="recommend-button">
-                Get Recommendations
-              </button>
+              <RecommenderButton ratedBooks={ratedBooks} />
             </>
           )}
           {error ? (
