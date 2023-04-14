@@ -31,20 +31,12 @@ def search_books():
         {
             "id": str(book["_id"]),
             "title": book["title"],
-            "authors": [book["author"]]
+            "author": book["author"]
         }
         for book in results
     ]
 
     return jsonify(formatted_results)
-
-
-# Endpoint for getting book recommendations
-# @app.route('/api/recommend', methods=['POST'])
-# def recommend_books():
-#     user_books = request.json['books']
-#     recommendations = recommender.get_recommendations(user_books)
-#     return jsonify(recommendations)
 
 @app.route('/api/recommend', methods=['POST'])
 def recommend_books():

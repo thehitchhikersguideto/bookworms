@@ -1,34 +1,45 @@
 import React from 'react';
 
-const RecommenderButton = ({ ratedBooks }) => {
+const RecommenderButton = ({ ratedBooks, onRecommendations }) => {
     const apiurl = `${process.env.REACT_APP_API_URL}`;
+    const cleanRatedBooks = ratedBooks.reduce((acc, book) => {
+      acc.push({
+        id: book.id,
+        rating: book.rating
+      });
+      return acc;
+    }, []);
+
+    const parsedBooks = {"books": cleanRatedBooks};
 
     const handleRecommendation = async () => {
-        console.log('Rated books:', ratedBooks);
-        const response = await fetch(`${apiurl}/api/recommend`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(ratedBooks),
-        });
-
-        if (!response.ok) {
-            throw new Error('Failed to retrieve recommendations');
-        }
-
-        console.log('Response:', response);
-
-        const data = await response.json();
-        console.log('Parsed response:', data);
-        const books = data.map((book) => ({
-            id: book.id,
-            title: book.title,
-            authors: book.authors.join(', '),
-            image: book.image,
-        }));
-        console.log(books);
-    };
+      try {
+          const response = await fetch(`${apiurl}/api/recommend`, {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json',
+              },
+              body: JSON.stringify(parsedBooks),
+          });
+  
+          if (!response.ok) {
+              throw new Error('Failed to retrieve recommendations');
+          }
+  
+          const data = await response.json();
+          const books = data.map((book) => ({
+              id: book.id,
+              title: book.title,
+              author: book.author,
+              image: book.image,
+          }));
+  
+          onRecommendations(books);
+  
+      } catch (err) {
+          console.log(err);
+      }
+  };  
 
   return (
     <button onClick={handleRecommendation}>

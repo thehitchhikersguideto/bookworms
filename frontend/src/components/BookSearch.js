@@ -22,7 +22,9 @@ export default function BookSearch() {
   };
 
   const handleRemoveRatedBook = (bookToRemove) => {
-    setRatedBooks((prevRatedBooks) => prevRatedBooks.filter((book) => book.id !== bookToRemove.id));
+    setRatedBooks((prevRatedBooks) =>
+      prevRatedBooks.filter((book) => book.id !== bookToRemove.id)
+    );
   };
 
   const handleInputChange = (event) => {
@@ -58,6 +60,13 @@ export default function BookSearch() {
     (book) => !ratedBooks.some((ratedBook) => ratedBook.id === book.id)
   );
 
+  const handleRecommendations = (recommendations) => {
+    setRecommendations(recommendations);
+    setShowRecommendations(true);
+    setRatedBooks([]);
+    setBooks([]);
+};
+
   return (
     <div className="FormS">
       {showRecommendations ? (
@@ -83,19 +92,19 @@ export default function BookSearch() {
                 isRatedList={true}
                 onRemoveRatedBook={handleRemoveRatedBook}
               />
-              <RecommenderButton ratedBooks={ratedBooks} />
+              <RecommenderButton
+                ratedBooks={ratedBooks}
+                onRecommendations={handleRecommendations}
+              />
             </>
           )}
           {error ? (
             <div className="error">{error}</div>
-            ) : (
-            <BookList
-                       books={filteredBooks}
-                       onBookRated={handleBookRated}
-                     />
-    )}
-    </>
-    )}
-        </div>
-    );
-    }
+          ) : (
+            <BookList books={filteredBooks} onBookRated={handleBookRated} />
+          )}
+        </>
+      )}
+    </div>
+  );
+}
