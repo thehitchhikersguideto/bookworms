@@ -12,3 +12,4 @@ book_scrape2.py
 data/processed/processed_books.csv
 data/processed/processed_users.csv
 data/processed/processed_reviews.csv
+csvs/user_reviews_unclean.scv
