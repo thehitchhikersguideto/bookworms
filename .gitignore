@@ -9,3 +9,6 @@ to_do.txt
 DB_manage.py
 book_scrape2.py
 *_deprecated.py
+data/processed/processed_books.csv
+data/processed/processed_users.csv
+data/processed/processed_reviews.csv
