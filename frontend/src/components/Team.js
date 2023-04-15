@@ -2,15 +2,16 @@ import React from 'react';
 import './css/team.css'
 
 const TeamPage = ({member}) => {
+    const name = member.name.split(' ');
+
     return (
       <div className="columnT">
           <div className="cardT">
             <img className='image' src={member.image} alt={member.name} style={{ width:200 }}/>
             <div className="containerT">
-              <h2>{member.name}</h2>
+              <h2>{name[0]} <br/> {name[1]}</h2>
               <p className="titleT">{member.role}</p>
-              <p>{member.link}</p>
-              <a href={member.link}><button className="buttonT" onClick={member.link}>Contact</button></a>
+              <a href={member.link} rel="noreferrer" target='_blank'><button className="buttonT">Contact</button></a>
             </div>
           </div>
         </div>

@@ -14,7 +14,7 @@ export default function AboutUsSection() {
 
   return (
     <section>
-      <div>
+      <div className='all'>
         <p className='minititle'>Meet the Team</p>
         <div className='rowT'>
           <TeamPage member={members[0]} />

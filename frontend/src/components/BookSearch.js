@@ -73,7 +73,7 @@ export default function BookSearch() {
         <RecommendedBooks books={recommendations} />
       ) : (
         <>
-          <h2>Book Recommender</h2>
+          <h2 className='subtitle'>Book Recommender</h2>
           <form onSubmit={handleSubmit}>
             <input
               className="input_book"
@@ -83,9 +83,17 @@ export default function BookSearch() {
               placeholder="Search for books"
             />
           </form>
+          {error ? (
+            <div className="error">{error}</div>
+          ) : (
+            <div>
+                <BookList books={filteredBooks} onBookRated={handleBookRated} />
+            </div>
+          )}
           {ratedBooks.length > 0 && (
             <>
-              <h3>Your Rated Books</h3>
+              <hr></hr>
+              <h3 className='rated'>Your Rated Books</h3>
               <BookList
                 books={ratedBooks}
                 onBookRated={handleBookRated}
@@ -97,11 +105,6 @@ export default function BookSearch() {
                 onRecommendations={handleRecommendations}
               />
             </>
-          )}
-          {error ? (
-            <div className="error">{error}</div>
-          ) : (
-            <BookList books={filteredBooks} onBookRated={handleBookRated} />
           )}
         </>
       )}

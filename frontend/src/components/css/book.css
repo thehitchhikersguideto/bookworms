@@ -13,26 +13,31 @@
     flex-wrap: wrap;
     margin: 0;
     padding: 0;
+    justify-content: center;
   }
   
   .book-item {
-    margin: 0 15px 15px 0;
+    margin: 0 0 15px 0;
+    padding: 1%;
   }
 
   .input_book {
     font-family: text;
+    margin-bottom: 10px;
+    border-radius: 25px;
   }
   
   .book-block {
     display: inline-block;
     text-decoration: none;
     color: inherit;
-    border: 1px solid #093293;
+    border: 1px solid #269e60;
     padding: 15px;
     box-sizing: border-box;
     width: 150px;
     height: 250px;
     position: relative;
+    background-color: #42e47e55;
   }
   
   .book-image {
@@ -45,24 +50,30 @@
   .book-title,
   .book-authors {
     text-align: center;
-    white-space: nowrap;
+    /* white-space: nowrap; */
     overflow: hidden;
     text-overflow: ellipsis;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    white-space: normal;
     width: 100%;
   }
   
   .book-title {
     font-size: 1rem;
-    margin-bottom: 5px;
     font-family: "text", serif;
+    margin-bottom: 20px;
+    font-weight: bold;
   }
   
   .book-authors {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
   }
   
   .selected {
     cursor: default;
+    margin-bottom: -10px;
   }
   
   .selected .book-image,
@@ -84,19 +95,31 @@
   }
 
   .remove-rated-book {
+    background-color: #c2fbd7;
     position: absolute;
-    top: 0;
-    right: 0;
-    background-color: red;
-    color: white;
+    border-radius: 100px;
+    box-shadow: rgba(44, 187, 99, .2) 0 -25px 18px -14px inset,rgba(44, 187, 99, .15) 0 1px 2px,rgba(44, 187, 99, .15) 0 2px 4px,rgba(44, 187, 99, .15) 0 4px 8px,rgba(44, 187, 99, .15) 0 8px 16px,rgba(44, 187, 99, .15) 0 16px 32px;
+    top: 2px;
+    right: 2px;
+    color: green;
     border: none;
     font-weight: bold;
+    font-family: text, CerebriSans-Regular,-apple-system,system-ui,Roboto,sans-serif;
     padding: 2px 5px;
     cursor: pointer;
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transition: all 250ms;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
   }
   
   .book-block:hover .remove-rated-book {
     opacity: 1;
+  }
+
+  .rated {
+    font-family: titles, serif;
+    margin-top: 50px;
+    margin-bottom: -10px;
   }

@@ -1,5 +1,7 @@
 .scroll-to-buttons {
-  background-color: #427553;
+  background: #649173; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #356043, #948d58); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #356043, #948d58); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   padding: 10px;
   display: flex;
   justify-content: space-around;
@@ -15,7 +17,7 @@
 
 .scroll-to-buttons button {
   display: inline-block;
-  background-color: #3d6c41;
+  background-color: #4e8a53;
   color: white;
   padding: 8px 16px;
   border: none;
@@ -27,5 +29,5 @@
 }
 
 .scroll-to-buttons button:hover {
-  background-color: #517748;
+  background-color: #80bb73;
 }

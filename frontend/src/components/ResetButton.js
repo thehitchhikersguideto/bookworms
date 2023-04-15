@@ -1,9 +1,16 @@
-import React from 'react';
+import React from "react";
+import "./css/button.css"
 
-export default function ResetButton({ onClick }) {
+function ResetButton() {
+  const handleClick = () => {
+    window.location.reload();
+  };
+
   return (
-    <button className="reset_button" onClick={onClick}>
+    <button className="button-33" onClick={handleClick}>
       Reset
     </button>
   );
 }
+
+export default ResetButton;

@@ -11,7 +11,7 @@ function RatingPopup({ book, onRatingSelected }) {
   return (
     <>
       <div className="rating-popup">
-        <h4>Rate this book:</h4>
+        <h4 className='rating-text'>Rate this book:</h4>
         <div className="star-rating">
           {[1, 2, 3, 4, 5].map((star) => (
             <button

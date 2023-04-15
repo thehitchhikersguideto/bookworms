@@ -42,9 +42,12 @@ const RecommenderButton = ({ ratedBooks, onRecommendations }) => {
   };  
 
   return (
-    <button onClick={handleRecommendation}>
-      Generate Recommendations
-    </button>
+    <div style={{justifyContent: "center"}}>
+      <button className='button-33' onClick={handleRecommendation}>
+        Generate Recommendations
+      </button>
+    </div>
+    
   );
 };
 

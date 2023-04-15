@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './css/book.css';
+import './css/button.css';
 import RatingPopup from './RatingPopup';
 
 function BookList({ books, onBookRated, isRatedList = false, onRemoveRatedBook }) {
