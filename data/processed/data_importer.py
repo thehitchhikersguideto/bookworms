@@ -9,12 +9,6 @@ logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(name)s - %(leve
 data_logger = logging.getLogger("data_logger")
 
 class DataImporter:
-    __instance = None
-
-    def __new__(cls):
-        if DataImporter.__instance is None:
-            DataImporter.__instance = object.__new__(cls)
-        return DataImporter.__instance
 
     def __init__(self, db_name = 'Goodreads', collection_name = 'Books'):
         self.db_name = db_name
@@ -25,7 +19,8 @@ class DataImporter:
         self.mongo_uri = None
         self.username = None
         self.password = None
-        self.pipeline = [{'$set': {'genres': {'$objectToArray': '$genres'}, 'awards': {'$objectToArray': '$awards'}, 'primary_lists': {'$objectToArray': '$primary_lists'}}}, {'$project': {'_id': 0}}]
+        self.amount = 0
+        self.pipeline = [{'$set': {'genres': {'$objectToArray': '$genres'},'awards': {'$objectToArray': '$awards'},'primary_lists': {'$objectToArray':'$primary_lists'}}},  {'$project': {'_id': 0}},  {'$limit': self.amount}]
         self.boot_connection()
 
     def boot_connection(self):
@@ -49,8 +44,9 @@ class DataImporter:
         data_logger.debug(f"MongoDB username: {self.username}")
         data_logger.debug(f"MongoDB password: {self.password}")
 
-    def import_data(self, write = False):
+    def import_data(self, write = False, amount = 1):
         self.set_db_collection()
+        self.amount = amount
         data = self.collection.aggregate(self.pipeline)
         data = [doc for doc in data]
         if write:
@@ -60,7 +56,7 @@ class DataImporter:
             return data
         else:
             return data
-        
+      
     def log_all(self):
         data_logger.debug(f"MongoDB client: {self.client}")
         data_logger.debug(f"MongoDB database: {self.db}")
@@ -78,5 +74,10 @@ class DataImporter:
     def write_data(self, data):
         with open(f'data_{time.strftime("%Y%m%d")}.json', 'w') as outputfile:
             json.dump((data), outputfile)
+
+
+# What to imporve: 
+# - Make pypackage out of this
+
 
         
