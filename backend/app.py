@@ -23,18 +23,20 @@ def search_books():
             {"title": {"$regex": query, "$options": "i"}},
             {"author": {"$regex": query, "$options": "i"}}
         ]},
-        {"_id": 1, "title": 1, "author": 1}
+        {"book_id": 1, "title": 1, "author": 1}
     )
 
     # Format the results as expected by the frontend
     formatted_results = [
         {
-            "id": str(book["_id"]),
+            "id": str(book["book_id"]),
             "title": book["title"],
             "author": book["author"]
         }
         for book in results
     ]
+
+    print(formatted_results)
 
     return jsonify(formatted_results)
 
