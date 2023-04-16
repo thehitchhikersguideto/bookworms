@@ -19,6 +19,8 @@ from sklearn.decomposition import TruncatedSVD
 from sklearn.metrics.pairwise import cosine_similarity
 
 
+
+
 # Import dataset
 df1 = pd.read_csv('processed_books.csv')
 
