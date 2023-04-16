@@ -1,17 +1,24 @@
 @font-face {
-    font-family: 'titles';
+    font-family: "titles";
     src:url('../../fonts/titles.ttf');
   }
 
 @font-face {
-  font-family: 'text';
-  src:url('../../fonts/text.ttf');
-}
+  font-family: "text";
+  src:url('../../fonts/text.eot') format('embedded-opentype'),
+   url('../../fonts/text.woff') format('woff'),
+   url('../../fonts/text.ttf') format('truetype'),
+   url('../../fonts/text.svg') format('svg');
+   font-weight: normal;
+   font-style: normal;
+   color: #093293;
+ }
 
 .container {
     opacity: 1;
     transform: translateY(20px);
     transition: all 0.5s ease-in-out;
+    justify-content: center;
 }
   
 .container.visible {
@@ -28,15 +35,27 @@
     margin-top: 250px;
     /*-webkit-text-stroke: 0.01vw #ffffff;*/
     animation: 3s anim-lineUp ease-out;
+    justify-content: center;
 }
 
 .minititle {
   font-size: 60px;
+  justify-content: center;
   text-align: center;
   color: white /*( to bottom #4c0465, rgb(60, 25, 55))*/;
     font-family: 'titles', serif;
   text-shadow: 5px 5px 6px rgba(0, 0, 0, 0.5);
   margin-top: 250px;
+  /*-webkit-text-stroke: 0.01vw #ffffff;*/
+  animation: 3s anim-lineUp ease-out;
+}
+
+.subtitle {
+  text-align: center;
+  color: white /*( to bottom #4c0465, rgb(60, 25, 55))*/;
+    font-family: 'titles', serif;
+  text-shadow: 5px 5px 6px rgba(0, 0, 0, 0.5);
+  margin-top: 30px;
   /*-webkit-text-stroke: 0.01vw #ffffff;*/
   animation: 3s anim-lineUp ease-out;
 }
@@ -73,6 +92,7 @@
   margin: 120px;
   border: 5px dashed rgb(167, 166, 166); 
   box-sizing: border-box;
+  padding-bottom: 20px;
 }
 
 .description {
@@ -148,6 +168,7 @@
     margin-bottom:300px;
     font-family: 'text', serif;
     font-size: 25px;
+    justify-content: center;
 }
 
 .gitButton {
@@ -163,11 +184,11 @@
   margin-bottom: 30px;
 }
 
-.aboutus{
-    color:rgb(255, 255, 255);
-    text-align: center;
-    margin-bottom:500px;
-    margin-left:10px;
-    margin-right:10px;
-    font-family: 'text', serif;
+hr {
+  border: none;
+  background-color: #84c57eba;
+  height: 5px;
+  width: 95%;
+  border-radius: 10px;
+  margin-top: 30px;
 }

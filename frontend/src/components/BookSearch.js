@@ -3,6 +3,7 @@ import './css/styles.css';
 import './css/book.css';
 import BookList from './BookList';
 import RecommendedBooks from './RecommendedBooks';
+import RecommenderButton from './RecommenderButton';
 
 export default function BookSearch() {
   const apiurl = `${process.env.REACT_APP_API_URL}`;
@@ -21,7 +22,9 @@ export default function BookSearch() {
   };
 
   const handleRemoveRatedBook = (bookToRemove) => {
-    setRatedBooks((prevRatedBooks) => prevRatedBooks.filter((book) => book.id !== bookToRemove.id));
+    setRatedBooks((prevRatedBooks) =>
+      prevRatedBooks.filter((book) => book.id !== bookToRemove.id)
+    );
   };
 
   const handleInputChange = (event) => {
@@ -44,7 +47,7 @@ export default function BookSearch() {
       const books = data.map((book) => ({
         id: book.id,
         title: book.title,
-        authors: book.authors.join(', '),
+        author: book.author,
         image: book.image,
       }));
       setBooks(books);
@@ -53,34 +56,16 @@ export default function BookSearch() {
     }
   };
 
-  const handleRecommend = async () => {
-    const response = await fetch(`${apiurl}/api/recommend`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(ratedBooks),
-    });
-
-    if (!response.ok) {
-      throw new Error('Failed to retrieve recommendations');
-    }
-
-    const data = await response.json();
-    console.log('Parsed response:', data);
-    const books = data.map((book) => ({
-      id: book.id,
-      title: book.title,
-      author: book.author,
-      image: book.image,
-    }));
-    setRecommendations(books);
-    setShowRecommendations(true);
-  };
-
   const filteredBooks = books.filter(
     (book) => !ratedBooks.some((ratedBook) => ratedBook.id === book.id)
   );
+
+  const handleRecommendations = (recommendations) => {
+    setRecommendations(recommendations);
+    setShowRecommendations(true);
+    setRatedBooks([]);
+    setBooks([]);
+};
 
   return (
     <div className="FormS">
@@ -88,7 +73,7 @@ export default function BookSearch() {
         <RecommendedBooks books={recommendations} />
       ) : (
         <>
-          <h2>Book Recommender</h2>
+          <h2 className='subtitle'>Book Recommender</h2>
           <form onSubmit={handleSubmit}>
             <input
               className="input_book"
@@ -98,30 +83,31 @@ export default function BookSearch() {
               placeholder="Search for books"
             />
           </form>
+          {error ? (
+            <div className="error">{error}</div>
+          ) : (
+            <div>
+                <BookList books={filteredBooks} onBookRated={handleBookRated} />
+            </div>
+          )}
           {ratedBooks.length > 0 && (
             <>
-              <h3>Your Rated Books</h3>
+              <hr></hr>
+              <h3 className='rated'>Your Rated Books</h3>
               <BookList
                 books={ratedBooks}
                 onBookRated={handleBookRated}
                 isRatedList={true}
                 onRemoveRatedBook={handleRemoveRatedBook}
               />
-              <button onClick={handleRecommend} className="recommend-button">
-                Get Recommendations
-              </button>
+              <RecommenderButton
+                ratedBooks={ratedBooks}
+                onRecommendations={handleRecommendations}
+              />
             </>
           )}
-          {error ? (
-            <div className="error">{error}</div>
-            ) : (
-            <BookList
-                       books={filteredBooks}
-                       onBookRated={handleBookRated}
-                     />
-    )}
-    </>
-    )}
-        </div>
-    );
-    }
+        </>
+      )}
+    </div>
+  );
+}

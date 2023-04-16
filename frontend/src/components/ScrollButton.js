@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import './css/ScrollToButtons.css';
+import './css/button.css'
 
 const ScrollToButtons = ({ buttons }) => {
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -33,7 +34,7 @@ const ScrollToButtons = ({ buttons }) => {
   return (
     <div className="scroll-to-buttons" style={{ position: 'fixed', top: 0 }}>
       {buttons.map(({ label, targetId, offset }, index) => (
-        <button key={index} onClick={() => handleButtonClick(targetId, offset)}>
+        <button className='button-33' key={index} onClick={() => handleButtonClick(targetId, offset)}>
           {label}
         </button>
       ))}

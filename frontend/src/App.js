@@ -11,10 +11,10 @@ export default function App() {
 
   const buttonConfigs = [
     { label: 'Start', targetId: 'section1', offset: 400 },
-    { label: 'Description', targetId: 'section2', offset: 100 },
-    { label: 'Recommender', targetId: 'section3', offset: 225 },    
-    { label: 'GitHub', targetId: 'section4', offset: 275 },    
-    { label: 'Meet the Team', targetId: 'section5', offset: 100 },  
+    { label: 'Description', targetId: 'section2', offset: 130 },
+    { label: 'Recommender', targetId: 'section3', offset: 140 },    
+    { label: 'GitHub', targetId: 'section4', offset: 295 },    
+    { label: 'Meet the Team', targetId: 'section5', offset: 145 },  
   ];
 
   return (
