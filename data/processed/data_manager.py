@@ -124,8 +124,6 @@ class DataExporter:
             dotenv.load_dotenv()
             self.password = os.getenv('MongoDBpassword')
             self.username = os.getenv('MongoDBuser')
-            data_logger.debug(f"MongoDB username: {self.username}")
-            data_logger.debug(f"MongoDB password: {self.password}")
 
         def log_all(self):
             data_logger.debug(f"MongoDB client: {self.client}")
