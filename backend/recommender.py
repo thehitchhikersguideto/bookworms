@@ -12,9 +12,11 @@ import re
 from sklearn.decomposition import TruncatedSVD
 from sklearn.metrics.pairwise import cosine_similarity
 import sys
-#sys.path.insert(0, '.\\data\\datamanager') # 
+from pathlib import Path
+
+root_directory = str(Path(__file__).resolve().parents[1])
+sys.path.append(root_directory)
 from data.datamanager import data_manager
-# import data_manager
 
 
 
@@ -198,3 +200,6 @@ def get_recommendations(user_books_ids = ['77203.The_Kite_Runner', '929.Memoirs_
     recommended_book_ids = remaining_books_df.iloc[top_indices]['book_id'].values
 
     print("Recommended books:", recommended_book_ids)
+
+if __name__ == '__main__':
+    get_recommendations()
