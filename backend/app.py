@@ -42,12 +42,14 @@ def search_books():
 
 @app.route('/api/recommend', methods=['POST'])
 def recommend_books():
+    print("request received")
     try:
         user_books = request.json['books']
         number_of_recommendations = request.json['num_books']
         # User_books is a list of dictionaries, translate this into two lists based on the contents of the dictionaries
         user_books_ids = [book['id'] for book in user_books]
         user_ratings = [book['rating'] for book in user_books]
+        print("starting recommender")
         recommendations = recommender.get_recommendations(user_books_ids=user_books_ids, user_ratings=user_ratings, books_to_return=number_of_recommendations)
         return jsonify(recommendations)
     except KeyError:

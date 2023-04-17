@@ -10,7 +10,7 @@ const RecommenderButton = ({ ratedBooks, onRecommendations }) => {
       return acc;
     }, []);
 
-    const parsedBooks = {"books": cleanRatedBooks};
+    const parsedBooks = {"books": cleanRatedBooks, "num_books": 3};
 
     const handleRecommendation = async () => {
       try {
