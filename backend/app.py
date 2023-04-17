@@ -44,7 +44,11 @@ def search_books():
 def recommend_books():
     try:
         user_books = request.json['books']
-        recommendations = recommender.get_recommendations(user_books)
+        number_of_recommendations = request.json['num_books']
+        # User_books is a list of dictionaries, translate this into two lists based on the contents of the dictionaries
+        user_books_ids = [book['id'] for book in user_books]
+        user_ratings = [book['rating'] for book in user_books]
+        recommendations = recommender.get_recommendations(user_books_ids=user_books_ids, user_ratings=user_ratings, books_to_return=number_of_recommendations)
         return jsonify(recommendations)
     except KeyError:
         # Return a 400 Bad Request response if the 'books' key is missing from the request body

@@ -13,6 +13,7 @@ from sklearn.decomposition import TruncatedSVD
 from sklearn.metrics.pairwise import cosine_similarity
 import sys
 from pathlib import Path
+import json
 
 root_directory = str(Path(__file__).resolve().parents[1])
 sys.path.append(root_directory)
@@ -43,7 +44,8 @@ def parse_awards(awards_str):
     return [award.strip() for award in awards_list if award]
 
 
-def get_recommendations(user_books_ids = ['77203.The_Kite_Runner', '929.Memoirs_of_a_Geisha', '128029.A_Thousand_Splendid_Suns', '19063.The_Book_Thief', '4214.Life_of_Pi'], user_ratings = [4, 4, 3, 5, 4]):
+
+def get_recommendations(user_books_ids = ['77203.The_Kite_Runner', '929.Memoirs_of_a_Geisha', '128029.A_Thousand_Splendid_Suns', '19063.The_Book_Thief', '4214.Life_of_Pi'], user_ratings = [4, 4, 3, 5, 4], books_to_return=3):
 
 
     data_importer = data_manager.DataImporter(db_name='Processed_Data', collection_name='Embeddings')
@@ -59,9 +61,11 @@ def get_recommendations(user_books_ids = ['77203.The_Kite_Runner', '929.Memoirs_
     # Get the books from the database
     data_importer.set_db_collection(db_name='Processed_Data', collection_name='processed_books')
     # Only grab the books we have embeddings for and dont grab any columns we dont need
-    data_importer.set_pipeline(pipeline = [{"$match": {"book_id": {"$in": available_books}}},{"$project": {"_id": 0,"series": 0,"price": 0,"language": 0,"primary_lists": 0,"year_published": 0, 'title': 0, 'description': 0}}])
+    data_importer.set_pipeline(pipeline = [{"$match": {"book_id": {"$in": available_books}}},{"$project": {"_id": 0,"series": 0,"price": 0,"language": 0,"primary_lists": 0,"year_published": 0, 'description': 0}}])
     book_data = data_importer.import_data(use_pipeline=True)
     df_books = pd.DataFrame(book_data)
+    titles_and_ids = df_books[['title', 'book_id', 'author']]
+    df_books.drop(columns=['title'], inplace=True)
 
     # Merge the two dataframes based on the book_id
     df_books_and_embeddings = pd.merge(df_books, df_embeddings, on='book_id')
@@ -172,34 +176,47 @@ def get_recommendations(user_books_ids = ['77203.The_Kite_Runner', '929.Memoirs_
     # If you have user ratings, you can weight the feature vectors by the ratings
     user_books_feature_vectors = user_books_feature_vectors * np.array(user_ratings)[:, np.newaxis]
 
-    #print(user_books_df)
-    #print(user_books_df.dtypes)
-    # Print columns with non-numeric data types
     print('Non-numeric columns: ')
     print(user_books_df.select_dtypes(exclude=[np.number]))
 
 
     user_profile = user_books_feature_vectors.mean(axis=0)
-
-
-    # Assuming you have already calculated the user_profile
-    # Remove the books that the user has interacted with from the DataFrame
     remaining_books_df = df_books_and_embeddings[~df_books_and_embeddings['book_id'].isin(user_books_ids)]
 
-    # Drop the 'book_id' column and convert the remaining books DataFrame to a NumPy array
     remaining_books_feature_vectors = remaining_books_df.drop(columns=['book_id']).values
+    """     similarity_scores = cosine_similarity([user_profile], remaining_books_feature_vectors)
+    top_indices = np.argsort(similarity_scores[0])[-books_to_return:][::-1]
+    recommended_book_ids = remaining_books_df.iloc[top_indices]['book_id'].values """
 
-    # Calculate similarity scores between the user profile and the remaining books
+
     similarity_scores = cosine_similarity([user_profile], remaining_books_feature_vectors)
 
-    # Get the indices of the top N most similar books
-    N = 10
-    top_indices = np.argsort(similarity_scores[0])[-N:][::-1]
+    sorted_indices = np.argsort(similarity_scores[0])[::-1]
+    unique_titles = set()
+    recommended_book_ids = []
 
-    # Get the top N most similar books' book_ids
-    recommended_book_ids = remaining_books_df.iloc[top_indices]['book_id'].values
 
-    print("Recommended books:", recommended_book_ids)
+    for ids in sorted_indices:
+
+        current_book_id = remaining_books_df.iloc[ids]['book_id']
+        current_title = titles_and_ids[titles_and_ids['book_id'] == current_book_id]['title'].values[0]
+
+        if current_title not in unique_titles:
+            recommended_book_ids.append(current_book_id)
+            unique_titles.add(current_title)
+
+        if len(recommended_book_ids) == books_to_return:
+            break
+
+    recommended_book_ids = np.array(recommended_book_ids)
+
+    # Get the book titles and authors for the recommended books, store as json of dicionary of {{book_id:x, title:y, author:z}}, {...}}
+    recommended_books = []
+    for book_id in recommended_book_ids:
+        recommended_books.append({'book_id': book_id, 'title': titles_and_ids[titles_and_ids['book_id'] == book_id]['title'].values[0], 'author': titles_and_ids[titles_and_ids['book_id'] == book_id]['author'].values[0]})
+    recommended_books = json.dumps(recommended_books)
+    print("Recommended books:", recommended_books)
+    return recommended_books
 
 if __name__ == '__main__':
     get_recommendations()
