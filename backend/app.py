@@ -50,7 +50,8 @@ def recommend_books():
         user_books_ids = [book['id'] for book in user_books]
         user_ratings = [book['rating'] for book in user_books]
         print("starting recommender")
-        recommendations = recommender.get_recommendations(user_books_ids=user_books_ids, user_ratings=user_ratings, books_to_return=number_of_recommendations)
+        recommendations = recommender.get_recommendations_dummy()
+        # recommendations = recommender.get_recommendations(user_books_ids=user_books_ids, user_ratings=user_ratings, books_to_return=number_of_recommendations)
         return jsonify(recommendations)
     except KeyError:
         # Return a 400 Bad Request response if the 'books' key is missing from the request body
