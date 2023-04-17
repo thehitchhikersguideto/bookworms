@@ -28,7 +28,7 @@ const RecommenderButton = ({ ratedBooks, onRecommendations }) => {
   
           const data = await response.json();
           const books = data.map((book) => ({
-              id: book.id,
+              id: book.book_id,
               title: book.title,
               author: book.author,
               image: book.image,
