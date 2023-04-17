@@ -66,7 +66,7 @@ def get_recommendations(user_books_ids = ['77203.The_Kite_Runner', '929.Memoirs_
     df_books = pd.DataFrame(book_data)
     titles_and_ids = df_books[['title', 'book_id', 'author']]
     df_books.drop(columns=['title'], inplace=True)
-
+    print("Data imported, preprocessing...")
     # Merge the two dataframes based on the book_id
     df_books_and_embeddings = pd.merge(df_books, df_embeddings, on='book_id')
 
@@ -92,7 +92,6 @@ def get_recommendations(user_books_ids = ['77203.The_Kite_Runner', '929.Memoirs_
 
     # Create dataframes for each set of one hot encoded features
     genres_df = pd.DataFrame(genres, columns=[f"genre_{c}" for c in mlb_genres.classes_])
-
 
     # Reset the index of each one hot encoded dataframe
     df_books_and_embeddings.reset_index(drop=True, inplace=True)
@@ -165,7 +164,7 @@ def get_recommendations(user_books_ids = ['77203.The_Kite_Runner', '929.Memoirs_
 
     # Reset the index
     reduced_data_df = reduced_data_df.reset_index(drop=True) """
-
+    print("Preprocessing done, generating recommendations...")
     # Filter the DataFrame to get only the rows corresponding to the books in the user_books_ids list
     user_books_df = df_books_and_embeddings[df_books_and_embeddings['book_id'].isin(user_books_ids)]
     user_books_df['rating'] = user_books_df['rating'].astype('float32')
