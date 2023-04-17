@@ -43,7 +43,9 @@ def parse_awards(awards_str):
     awards_list = awards_str.strip('][').split(', ')
     return [award.strip() for award in awards_list if award]
 
-
+def get_recommendations_dummy():
+    x = [{"book_id": "20448515-bared-to-you", "title": "Bared to You", "author": "Sylvia Day"}, {"book_id": "7445.The_Glass_Castle", "title": "The Glass Castle", "author": "Jeannette Walls"}, {"book_id": "4009.Nine_Stories", "title": "Nine Stories", "author": "J.D. Salinger"}]
+    return x
 
 def get_recommendations(user_books_ids = ['77203.The_Kite_Runner', '929.Memoirs_of_a_Geisha', '128029.A_Thousand_Splendid_Suns', '19063.The_Book_Thief', '4214.Life_of_Pi'], user_ratings = [4, 4, 3, 5, 4], books_to_return=3):
 
