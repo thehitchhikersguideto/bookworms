@@ -12,3 +12,5 @@ book_scrape2.py
 data_handler_quick.ipynb
 recommender_cosine_sim.py
 recommender_cosine_sim.ipynb
+*.pyc
+.DS_Store
