@@ -1,0 +1,82 @@
+
+ .columnT {
+    float: left;
+     margin: 30px 20px 125px;
+     padding: 0 8px;
+     font-family: 'text', serif;
+    color: white;
+    max-width: 225px;
+    align-items: center;
+    justify-content: center;
+    /* background-color: rgb(67, 198, 111); */
+    background: #649173; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #bab067, #5dcd7b); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #bab067, #5dcd7b); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  }
+  
+  @media screen and (max-width: 650px) {
+    .columnT {
+      width: 100%;
+      display: block;
+    }
+  }
+  
+  .cardT {
+    box-shadow: 0 0 6px 8px rgb(194, 216, 97);
+  }
+  
+  .containerT {
+    padding: 0 16px;
+  }
+  
+  .containerT::after, .rowT::after {
+    content: "";
+    clear: both;
+    display: table;
+    justify-content: center;
+  }
+  
+  .titleT {
+    color: rgb(255, 255, 255);
+      font-family: 'text', serif;
+  }
+  
+  .buttonT {
+    border: none;
+    border-radius: 10px;
+    outline: 0;
+    box-shadow: rgba(44, 187, 99, .2) 0 -25px 18px -14px inset,rgba(44, 187, 99, .15) 0 1px 2px,rgba(44, 187, 99, .15) 0 2px 4px,rgba(44, 187, 99, .15) 0 4px 8px,rgba(44, 187, 99, .15) 0 8px 16px,rgba(44, 187, 99, .15) 0 16px 32px;
+    display: inline-block;
+    padding: 8px;
+      background-color: #c2fbd7;
+      font-family: 'text', serif;
+    text-align: center;
+    color: green;
+    font-size: 20px;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom: 15px;
+    user-select: none;
+    transition: all 250ms;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  }
+  
+  .buttonT:hover {
+    box-shadow: rgba(44,187,99,.35) 0 -25px 18px -14px inset,rgba(44,187,99,.25) 0 1px 2px,rgba(44,187,99,.25) 0 2px 4px,rgba(44,187,99,.25) 0 4px 8px,rgba(44,187,99,.25) 0 8px 16px,rgba(44,187,99,.25) 0 16px 32px;
+    transform: scale(1.05) rotate(-1deg);
+  } 
+
+  .image {
+    margin: 12px;
+  }
+
+  .all {
+    justify-content: center;
+  }
+
+  .name {
+    font-family: 'text', serif;
+    color: white;
+    font-size: 25px;
+  }

@@ -1,0 +1,194 @@
+@font-face {
+    font-family: "titles";
+    src:url('../../fonts/titles.ttf');
+  }
+
+@font-face {
+  font-family: "text";
+  src:url('../../fonts/text.eot') format('embedded-opentype'),
+   url('../../fonts/text.woff') format('woff'),
+   url('../../fonts/text.ttf') format('truetype'),
+   url('../../fonts/text.svg') format('svg');
+   font-weight: normal;
+   font-style: normal;
+   color: #093293;
+ }
+
+.container {
+    opacity: 1;
+    transform: translateY(20px);
+    transition: all 0.5s ease-in-out;
+    justify-content: center;
+}
+  
+.container.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.title {
+    font-size: 120px;
+    text-align: center;
+    color: white /*( to bottom #4c0465, rgb(60, 25, 55))*/;
+    font-family: 'titles', serif;
+    text-shadow: 5px 5px 6px rgba(0, 0, 0, 0.5);
+    margin-top: 250px;
+    /*-webkit-text-stroke: 0.01vw #ffffff;*/
+    animation: 3s anim-lineUp ease-out;
+    justify-content: center;
+}
+
+.minititle {
+  font-size: 60px;
+  justify-content: center;
+  text-align: center;
+  color: white /*( to bottom #4c0465, rgb(60, 25, 55))*/;
+    font-family: 'titles', serif;
+  text-shadow: 5px 5px 6px rgba(0, 0, 0, 0.5);
+  margin-top: 250px;
+  /*-webkit-text-stroke: 0.01vw #ffffff;*/
+  animation: 3s anim-lineUp ease-out;
+}
+
+.subtitle {
+  text-align: center;
+  color: white /*( to bottom #4c0465, rgb(60, 25, 55))*/;
+    font-family: 'titles', serif;
+  text-shadow: 5px 5px 6px rgba(0, 0, 0, 0.5);
+  margin-top: 30px;
+  /*-webkit-text-stroke: 0.01vw #ffffff;*/
+  animation: 3s anim-lineUp ease-out;
+}
+
+.popup{
+  font-size:40px;
+  text-align: center;
+  color: white;
+    font-family: 'text', serif;
+  animation: 5s anim-lineUp ease-out;
+  margin-bottom:200px;
+  text-shadow: 5px 5px 6px rgba(0, 0, 0, 0.5);
+}
+
+@keyframes anim-lineUp {
+  0% {
+    opacity: 0;
+    transform: translateY(80%);
+  }
+  20% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+
+.box, .description, .FormS, .git, .aboutus {
+  margin: 120px;
+  border: 5px dashed rgb(167, 166, 166); 
+  box-sizing: border-box;
+  padding-bottom: 20px;
+}
+
+.description {
+    font-size: 35px;
+    text-align: center;
+    color: rgb(255, 255, 255);
+    font-family: 'text', serif;
+    text-shadow: 3px 3px 4px rgba(0, 0, 0, 0.5);
+    padding: 15px;
+    min-width:100px; 
+    margin-top: 10px;
+    display: inline-block;
+}
+
+/* .description2 {
+  font-size: 20px;
+  text-align: center;
+  color: rgb(255, 255, 255);
+  font-family: 'text';
+  text-shadow: 3px 3px 4px rgba(0, 0, 0, 0.5);
+  margin-bottom:500px;
+} */
+
+.FormS{
+    color:rgb(255, 255, 255);
+    text-align: center;
+    margin-bottom: 300px;
+    font-family: 'text', serif;
+    font-size: 25px;
+}
+
+.input_book {
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    width: 80%;
+    box-sizing: border-box;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.form_input {
+    font-size: 15px;
+    font-family: 'text', serif;
+    text-align: left;
+    margin-bottom: 100px;
+}
+
+.input {
+  margin-left: 20px;
+  align-items: center;
+}
+
+.request_ex{
+    color:#4c0465;
+    font-family: 'text', serif;
+    text-align: center;
+    border-radius: 5px;
+    margin: 10px;
+    font-size: 20px;
+}
+
+.req_btn{
+    color: #ffffff;
+    font-family: 'text', serif;
+
+}
+
+.git{
+    color:rgb(255, 255, 255);
+    text-align: center;
+    margin-bottom:300px;
+    font-family: 'text', serif;
+    font-size: 25px;
+    justify-content: center;
+}
+
+.gitButton {
+    background-color: #ffffff;
+    font-family: 'text', serif;
+    margin-bottom: 20px;
+    font-size: 30px;
+    color: #000000;
+    border-radius: 10px;
+}
+
+.git-text {
+  margin-bottom: 30px;
+}
+
+hr {
+  border: none;
+  background-color: #84c57eba;
+  height: 5px;
+  width: 95%;
+  border-radius: 10px;
+  margin-top: 30px;
+}

@@ -9,3 +9,8 @@ to_do.txt
 DB_manage.py
 book_scrape2.py
 *_deprecated.py
+data_handler_quick.ipynb
+recommender_cosine_sim.py
+recommender_cosine_sim.ipynb
+*.pyc
+.DS_Store

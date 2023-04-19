@@ -14,6 +14,9 @@ class MongoReco:
     __collection_books = None
     __collection_book_reviews = None
     __collection_book_list = None
+    __working_collection = None
+    __client = None
+    # __db = None
 
     def __new__(cls):
         if cls.__instance is None:
@@ -46,7 +49,9 @@ class MongoReco:
         logging.info("MongoDB Database: " + SOURCE_DB)
         logging.info("User: " + user)
         client = pymongo.MongoClient(MONGO_URI)
+        self.__client = client
         db = client[SOURCE_DB]
+        self.__db = db
         collection_books = db[SOURCE_COLLECTION]
         collection_book_reviews = db[SOURCE_COLLECTION_REVIEWS]
         collection_book_list = db[SOURCE_COLLECTION_BOOKLIST]
@@ -82,6 +87,12 @@ class MongoReco:
         book_id = href.split('/')[-1]
         href = {"href" : href, "book_id" : book_id ,"scraped" : 0, "review_scraped" : 0}
         return href
+    
+    def update_mongo_params(self, collection):
+        try:
+            self.__working_collection = self.__client[self.__db][collection]
+        except pymongo.errors.CollectionInvalid as e:
+            print("Collection does not exist:", e)
         
 
     # Function to insert the href into the collection, if it does not already exist
@@ -295,11 +306,4 @@ class MongoReco:
             # logging.info(e)
             return False
 
-    # Very expensive method to scan a given collection to make sure every entry follows a given structure, if the structure is not followed, the entry is deleted
-    # After deleting the entry, the method will return a list of the deleted entries 
-    # Additionally the method will update the scraped value to 0 for the deleted entries coresponding to its collection
-"""     @classmethod
-    def verify_content_reviews(cls):
-        try:
-            deleted = []
-            reviews = cls.__collection_book_reviews.find() """
+
