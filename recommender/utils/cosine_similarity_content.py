@@ -10,10 +10,12 @@ from pathlib import Path
 import xgboost
 import json
 import logging
-from data.datamanager import data_manager
+""" from data.datamanager import data_manager
 
 root_directory = str(Path(__file__).resolve().parents[1])
-sys.path.append(root_directory)
+sys.path.append(root_directory) """
+
+import data_manager
 
 
 def standardize_publisher_name(publisher):
@@ -60,11 +62,12 @@ def init_connections():
     data_importer.set_pipeline(pipeline = [{"$match": {"book_id": {"$in": available_books}}},{"$project": {"_id": 0,"series": 0,"price": 0,"language": 0,"primary_lists": 0,"year_published": 0, 'description': 0, 'rating':0}}])
     book_data = data_importer.import_data(use_pipeline=True)
     df_books = pd.DataFrame(book_data)
+    titles_and_ids = df_books[['book_id', 'title']]
     df_books.drop(columns=['title'], inplace=True)
     print("Data imported, preprocessing...")
     # Merge the two dataframes based on the book_id
     df_books_and_embeddings = pd.merge(df_books, df_embeddings, on='book_id')
-    return df_books_and_embeddings
+    return df_books_and_embeddings, titles_and_ids
 
 
 def DR_with_Trunc_SVD(df_books_and_embeddings):
@@ -108,7 +111,7 @@ def DR_by_grouping(df_books_and_embeddings, min_freq=10):
 def get_cosine_recommendations(user_books_ids = ['77203.The_Kite_Runner', '929.Memoirs_of_a_Geisha', '128029.A_Thousand_Splendid_Suns', '19063.The_Book_Thief', '4214.Life_of_Pi'], user_ratings = [4, 4, 3, 5, 4], books_to_return=3):
 
     # Get data
-    df_books_and_embeddings = init_connections()
+    df_books_and_embeddings, titles_and_ids = init_connections()
     df_books_and_embeddings['publisher'] = df_books_and_embeddings['publisher'].apply(standardize_publisher_name)
 
     print("checkpoitnt 1")
@@ -187,11 +190,27 @@ def get_cosine_recommendations(user_books_ids = ['77203.The_Kite_Runner', '929.M
 
     sorted_indices = np.argsort(similarity_scores[0])[::-1]
     # Get N most similar books
-    number_of_books_for_collab = 500
-    books_for_collab = sorted_indices[:number_of_books_for_collab]
-    print(books_for_collab[1:10])
+    unique_titles = set()
+    recommended_book_ids_score = []
 
-    return books_for_collab #TODO: {book names, cosine similarity scores}
+
+    for ids in sorted_indices:
+
+        current_book_id = remaining_books_df.iloc[ids]['book_id']
+        current_title = titles_and_ids[titles_and_ids['book_id'] == current_book_id]['title'].values[0]
+
+        if current_title not in unique_titles:
+            recommended_book_ids_score.append((current_book_id, similarity_scores[0][ids]))
+            unique_titles.add(current_title)
+
+        if len(recommended_book_ids_score) == books_to_return:
+            break
+
+    recommended_book_ids_score = np.array(recommended_book_ids_score)
+
+    # Get the book titles and authors for the recommended books, store as json of dicionary of {{book_id:x, title:y, author:z}}, {...}}
+    print("Recommended books:", recommended_book_ids_score)
+    return recommended_book_ids_score
 
 
 
