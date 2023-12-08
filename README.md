@@ -14,7 +14,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/thehitchhikersguideto/gymworkouts">
+  <a href="https://github.com/thehitchhikersguideto/bookworms">
     <img src="https://img.freepik.com/free-vector/hand-drawn-flat-design-stack-books_23-2149331952.jpg?w=826&t=st=1678020261~exp=1678020861~hmac=7539b0a117cd1610f052ab1b11fddc03c8552a9f1894d273446a3b23d546eb5f" style="border-radius: 30px" >
   </a>
 
@@ -181,16 +181,16 @@ Don't forget to give the project a star! Thanks again!
 
 <!-- MARKDOWN LINKS & IMAGES [![Name][Shield]][url] -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/vtwoptwo/CPPBasics.svg?style=for-the-badge
+[contributors-shield]: https://img.shields.io/github/contributors/thehitchhikersguideto/bookworms.svg?style=for-the-badge
 [contributors-url]: https://github.com/thehitchhikersguideto/bookworms/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/vtwoptwo/CPPBasics.svg?style=for-the-badge
-[forks-url]: https://github.com/thehitchhikersguideto/gymworkouts/network/members
-[stars-shield]: https://img.shields.io/github/stars/vtwoptwo/CPPBasics.svg?style=for-the-badge
-[stars-url]: https://github.com/thehitchhikersguideto/gymworkouts/stargazers
-[issues-shield]: https://img.shields.io/github/issues/vtwoptwo/CPPBasics.svg?style=for-the-badge
-[issues-url]: https://github.com/thehitchhikersguideto/gymworkouts/issues
-[license-shield]: https://img.shields.io/github/license/vtwoptwo/CPPBasics.svg?style=for-the-badge
-[license-url]: https://github.com/thehitchhikersguideto/gymworkouts/blob/master/LICENSE.txt
+[forks-shield]: https://img.shields.io/github/forks/thehitchhikersguideto/bookworms.svg?style=for-the-badge
+[forks-url]: https://github.com/thehitchhikersguideto/bookworms/network/members
+[stars-shield]: https://img.shields.io/github/stars/thehitchhikersguideto/bookworms.svg?style=for-the-badge
+[stars-url]: https://github.com/thehitchhikersguideto/bookworms/stargazers
+[issues-shield]: https://img.shields.io/github/issues/thehitchhikersguideto/bookworms.svg?style=for-the-badge
+[issues-url]: https://github.com/thehitchhikersguideto/bookworms/issues
+[license-shield]: https://img.shields.io/github/license/thehitchhikersguideto/bookworms.svg?style=for-the-badge
+[license-url]: https://github.com/thehitchhikersguideto/bookworms/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/vera-prohaska-31734b1b5/
 [Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
